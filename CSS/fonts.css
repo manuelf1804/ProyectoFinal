@@ -1,0 +1,6 @@
+/* este archivo es para especificar tamaños y tipos de letra que se usan en la pagina */
+
+h1{
+    font-family: 'Josefin Sans', sans-serif;
+    size:55px;
+}
