@@ -1,0 +1,17 @@
+#miCarousel, #miCarousel  img{
+    height: 450px;
+    width: 900px;
+}
+/* #miCarousel{
+    margin-left:55px;
+} */
+.carousel-item:after {
+    content:"";
+    display:block;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    background:rgba(0,0,0,0.5);
+  }

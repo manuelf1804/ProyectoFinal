@@ -8,37 +8,76 @@ Pedro Ramos-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="bootstrap-4.1.1/dist/css/bootstrap.css">
 
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/sidebar.css">
+    <link rel="stylesheet" href="CSS/sidenav.css">
     <link rel="stylesheet" href="CSS/fonts.css">
+    <link rel="stylesheet" href="CSS/carousel.css">
     <link rel="icon" href="IMG/favicon.ico">
-    
     <title>LavaMax</title>
 </head>
 <body>
-        <nav class="navbar navbar-default navbar-right">
-                <button type="button" class="btn btn-danger float-md-right">Login</button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-          </ul>
-        </div>
-    </nav>
+        <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                  </ul> 
+                    <button class="btn btn-primary my-2 my-sm-0" type="submit">Login</button>
+                </div>
+              </nav>
     <div class="sidenav">
         <span id='active'>Inicio</span>
-        <a href="#">Services</a>
+        <a href="#">Servicios</a>
         <a href="#">Clients</a>
         <a href="nosotros.html">¿Quienes Somos?</a>
-      </div> 
-      <div class="main">
+        <p class="thanks">Hecho con ❤️ y Bootstrap 4.1.1</p>
+    </div> 
+    <div class="main">
         <h1 class='title'>Lavanderia LavaMax</h1>
-      </div>
+        <div id="miCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ul class="carousel-indicators">
+                  <li data-target="#miCarousel" data-slide-to="0" class="active"></li>
+                  <li data-target="#miCarousel" data-slide-to="1"></li>
+                  <li data-target="#miCarousel" data-slide-to="2"></li>
+                </ul>
+                <!-- The slideshow -->
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="IMG/static/rm.jpg" alt="Blancos">
+                    <div class="carousel-caption">
+                            <h3>Ropa Blanca</h3>
+                            <p>Tratamos tu ropa blanca con el cuidado que se merece</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img src="IMG/static/suit.jpg" alt="Sacos">
+                    <div class="carousel-caption">
+                            <h3>Sacos</h3>
+                            <p>Planchamos tus sacos para que seas el mas elegante siempre</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                        <img src="IMG/static/dress.jpg" alt="Sacos">
+                        <div class="carousel-caption">
+                                <h3>Vestidos</h3>
+                                <p>Siempre estaras proyectando cuando terminemos con tu vestido</p>
+                        </div>
+                </div>
+                <!-- Botones de Izquierda y derecha -->
+                <a class="carousel-control-prev" href="#miCarousel" data-slide="prev">
+                  <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#miCarousel" data-slide="next">
+                  <span class="carousel-control-next-icon"></span>
+                </a>
+              </div>
+    </div>
     
 <!-- JQuery y js de Bootstrap -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>     
+<script src="bootstrap-4.1.1/dist/js/bootstrap.js"></script>     
 <script src="JS/main.js"></script>
 </body>
 </html>
