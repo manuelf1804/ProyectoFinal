@@ -1,10 +1,11 @@
-#miCarousel, #miCarousel  img{
-    height: 450px;
-    width: 900px;
+#miCarousel{
+    width: 95%;
+    height: 100%;
 }
-/* #miCarousel{
-    margin-left:55px;
-} */
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
 .carousel-item:after {
     content:"";
     display:block;

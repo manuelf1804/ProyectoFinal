@@ -6,11 +6,12 @@ Pedro Ramos-->
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="bootstrap-4.1.1/dist/css/bootstrap.css">
 
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="CSS/sidenav.css">
     <link rel="stylesheet" href="CSS/fonts.css">
     <link rel="stylesheet" href="CSS/carousel.css">
@@ -18,62 +19,90 @@ Pedro Ramos-->
     <title>LavaMax</title>
 </head>
 <body>
-        <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav mr-auto">
-                  </ul> 
-                    <button class="btn btn-primary my-2 my-sm-0" type="submit">Login</button>
-                </div>
-              </nav>
-    <div class="sidenav">
-        <span id='active'>Inicio</span>
-        <a href="#">Servicios</a>
-        <a href="#">Clients</a>
-        <a href="nosotros.html">¿Quienes Somos?</a>
-        <p class="thanks">Hecho con ❤️ y Bootstrap 4.1.1</p>
-    </div> 
-    <div class="main">
-        <h1 class='title'>Lavanderia LavaMax</h1>
-        <div id="miCarousel" class="carousel slide" data-ride="carousel">
-                <!-- Indicators -->
-                <ul class="carousel-indicators">
-                  <li data-target="#miCarousel" data-slide-to="0" class="active"></li>
-                  <li data-target="#miCarousel" data-slide-to="1"></li>
-                  <li data-target="#miCarousel" data-slide-to="2"></li>
-                </ul>
-                <!-- The slideshow -->
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src="IMG/static/rm.jpg" alt="Blancos">
-                    <div class="carousel-caption">
-                            <h3>Ropa Blanca</h3>
-                            <p>Tratamos tu ropa blanca con el cuidado que se merece</p>
-                    </div>
-                  </div>
-                  <div class="carousel-item">
-                    <img src="IMG/static/suit.jpg" alt="Sacos">
-                    <div class="carousel-caption">
-                            <h3>Sacos</h3>
-                            <p>Planchamos tus sacos para que seas el mas elegante siempre</p>
-                    </div>
-                  </div>
-                  <div class="carousel-item">
-                        <img src="IMG/static/dress.jpg" alt="Sacos">
-                        <div class="carousel-caption">
-                                <h3>Vestidos</h3>
-                                <p>Siempre estaras proyectando cuando terminemos con tu vestido</p>
-                        </div>
-                </div>
-                <!-- Botones de Izquierda y derecha -->
-                <a class="carousel-control-prev" href="#miCarousel" data-slide="prev">
-                  <span class="carousel-control-prev-icon"></span>
-                </a>
-                <a class="carousel-control-next" href="#miCarousel" data-slide="next">
-                  <span class="carousel-control-next-icon"></span>
-                </a>
-              </div>
+    <nav class="navbar navbar-expand navbar-light">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+      </ul> 
+        <button class="btn btn-primary my-2 my-sm-0" type="submit">Login</button>
     </div>
-    
+  </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="col-12 col-md-2 p-0 bg-dark">
+                <nav class="navbar navbar-expand navbar-dark bg-dark flex-md-column flex-row align-items-start py-2">
+                    <div class="collapse navbar-collapse">
+                        <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
+                            <li class="nav-item">
+                                <a class="nav-link pl-0" href="#"><i class="fa current fa-home fa-fw"></i> <span class="d-none d-md-inline font-weight-bold">Home</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link pl-0 text-nowrap" href="#"><i class="fa fa-archive fa-fw"></i> <span class="d-md-inline">Servicios</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link pl-0 text-nowrap" href="#"><i class="fa fa-star fa-fw"></i> <span class="d-md-inline">Link</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link pl-0 text-nowrap" href="#"><i class="fa fa-user fa-fw"></i> <span class="d-md-inline">¿Quienes Somos?</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </aside>
+            <main class="col bg-faded py-3">
+              <div class="row">
+                <div class="col-md-10 offset-md-1 contenido">
+                    <h1 class='title'>Lavanderia LavaMax</h1>
+                    <div id="miCarousel" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ul class="carousel-indicators">
+                    <li data-target="#miCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#miCarousel" data-slide-to="1"></li>
+                    <li data-target="#miCarousel" data-slide-to="2"></li>
+                    </ul>
+                    <!-- The slideshow -->
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img src="IMG/static/rm.jpg" alt="Blancos">
+                        <div class="carousel-caption">
+                          <h3>Ropa Blanca</h3>
+                          <p>Tratamos tu ropa blanca con el cuidado que se merece</p>
+                        </div>
+                      </div>
+                      <div class="carousel-item">
+                        <img src="IMG/static/suit2.jpg" alt="Sacos">
+                        <div class="carousel-caption">
+                          <h3>Sacos</h3>
+                          <p>Planchamos tus sacos para que seas el mas elegante siempre</p>
+                        </div>
+                      </div>
+                      <div class="carousel-item">
+                        <img src="IMG/static/dress2.jpg" alt="Sacos">
+                        <div class="carousel-caption">
+                          <h3>Vestidos</h3>
+                          <p>Siempre estaras proyectando cuando terminemos con tu vestido</p>
+                        </div>
+                      </div>
+                            <!-- Botones de Izquierda y derecha -->
+                            <a class="carousel-control-prev" href="#miCarousel" data-slide="prev">
+                              <span class="carousel-control-prev-icon"></span>
+                            </a>
+                            <a class="carousel-control-next" href="#miCarousel" data-slide="next">
+                              <span class="carousel-control-next-icon"></span>
+                            </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h2>Main</h2>
+            <p>Sriracha biodiesel taxidermy organic post-ironic, Intelligentsia salvia mustache 90's code editing brunch. Butcher polaroid VHS art party, hashtag Brooklyn deep v PBR narwhal sustainable mixtape 
+swag wolf squid tote bag. Tote bag cronut semiotics, raw denim deep v taxidermy messenger bag. Tofu YOLO Etsy, direct trade 
+ethical Odd Future jean shorts paleo. Forage Shoreditch tousled aesthetic irony, street art organic Bushwick artisan cliche semiotics ugh 
+synth chillwave meditation. Shabby chic lomo plaid vinyl chambray Vice. Vice sustainable cardigan, Williamsburg master cleanse hella DIY 90's blog.</p> 
+              </div>
+            </main>
+        </div>
+    </div>
 <!-- JQuery y js de Bootstrap -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
