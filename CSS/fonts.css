@@ -1,6 +1,18 @@
 /* este archivo es para especificar tamaños y tipos de letra que se usan en la pagina */
 
 h1{
-    font-family: 'Josefin Sans', sans-serif;
-    size:55px;
+    font-size:40px;
+}
+#sidebar-wrapper span{
+    font-size:17px;
+}
+h1,#sidebar-wrapper span, h3{
+    font-family: 'Quicksand', sans-serif;
+}
+p{
+    font-family: 'Quattrocento Sans', sans-serif;
+    font-size:18px;
+}
+nav span{ 
+    font-weight: bold;
 }
