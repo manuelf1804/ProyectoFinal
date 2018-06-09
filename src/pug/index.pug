@@ -1,0 +1,32 @@
+extends _template.pug
+
+block variable
+    -var title='Home'
+block replace 
+    h1.title Los Ganchos 
+        img#logo(src="IMG/static/gancho.png")
+    p.
+        ¿Cansado de tener que moverte cada vez que quieres atender tu ropa?
+        Pues con nuestro servicio online de lavenderia puedes hacer todos tus mandados desde la comodidad de tu casa.
+    #miCarousel.carousel.slide(data-ride="carousel")
+        .carousel-inner
+            include _variables
+            -var first=true;
+            each item in carouselItems
+                if(first==true)
+                    .carousel-item.active
+                        img(src='IMG/static/'+item.src+'.jpg' alt=item.title)
+                        .carousel-caption
+                            h3=item.title
+                            p=item.sub
+                else 
+                    .carousel-item
+                        img(src='IMG/static/'+item.src+'.jpg' alt=item.title)
+                        .carousel-caption
+                            h3=item.title
+                            p=item.sub
+                -first=false;
+            a.carousel-control-prev(href="#miCarousel" data-slide="prev")
+                span.carousel-control-prev-icon
+            a.carousel-control-next(href="#miCarousel" data-slide="next")
+                span.carousel-control-next-icon
