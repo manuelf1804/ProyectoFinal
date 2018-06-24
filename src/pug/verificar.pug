@@ -1,10 +1,6 @@
 extends _template.pug
 
-block variable
-    -var title='Verificar'
 block replace
-    h1.title Verificar Orden
-        img#logo(src="IMG/static/gancho.png")
     p Por favor ingrese los siguientes datos para poder ver el estado de la orden
     .midivsito
         .row
@@ -17,4 +13,4 @@ block replace
                     label.col-sm-3.col-form-label(for='str') Cedula:
                     .col-md-8
                         input.form-control.border.border-dark#str(type="text", name="str")
-                button#btn.btn.btn-dark.float-right Verificar
+                button#btn.btn.btn-dark.float-right Buscar

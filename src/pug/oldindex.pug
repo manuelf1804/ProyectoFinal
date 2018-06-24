@@ -1,0 +1,51 @@
+extends _template
+
+block replace 
+    h1.title Los Ganchos 
+        img#logo(src=url+'/IMG/gancho.png')
+    p.
+        ¿Cansado de tener que moverte cada vez que quieres atender tu ropa?
+        Pues con nuestro servicio online de lavanderia puedes hacer todos tus mandados desde la comodidad de tu casa.
+    #miCarousel.carousel.slide(data-ride="carousel")
+        .carousel-inner
+            -var first=true;
+            each item in variables.carouselItems
+                if(first==true)
+                    .carousel-item.active
+                        img(src=url+'/IMG/'+item.src+'.jpg' alt=item.title)
+                        .carousel-caption
+                            h3=item.title
+                            p=item.sub
+                else 
+                    .carousel-item
+                        img(src=url+'/IMG/'+item.src+'.jpg' alt=item.title)
+                        .carousel-caption
+                            h3=item.title
+                            p=item.sub
+                -first=false;
+            a.carousel-control-prev(href="#miCarousel" data-slide="prev")
+                span.carousel-control-prev-icon
+            a.carousel-control-next(href="#miCarousel" data-slide="next")
+                span.carousel-control-next-icon
+    .container
+        .row.mirowsito
+            .col-md-5
+                block Servicios
+                    h2 Servicios
+                    p.mini Aqui podrá ver una fabulosa tabla con nuestros servicios y precios.
+                    table.table
+                        thead.thead-dark
+                            tr
+                                th(scope='col') Nombre
+                                th(scope='col') Precio
+                        tbody
+                            each serv in servicios
+                                tr                     
+                                    td #{serv.nombre}
+                                    td $#{parseFloat(serv.precio).toFixed(2)}                        
+
+            .col-md-5.offset-md-2
+                h2 Datos intersantes
+                ul 
+                    li Las novias usaban vestidos de cualquier color hasta que en 1840, la Reina Victoria se casó con Alberto de Sajonia-Coburgo. Para la ocasión eligió llevar un vestido blanco y se convirtió en una tendencia que perdura hasta el día de hoy.
+

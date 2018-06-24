@@ -4,9 +4,10 @@ function togglear(mq) {
         $("#wrapper").toggleClass("toggled");
     } 
 }
-$("#menu-toggle").click(function() {
+$("#menu-toggle").click(function(e) {
+    e.preventDefault();
     $("#wrapper").toggleClass("toggled");
     });
 var x = window.matchMedia("(max-width: 700px)")
-togglear(x) 
-x.addListener(togglear)  
+togglear(x);
+x.addListener(togglear);  

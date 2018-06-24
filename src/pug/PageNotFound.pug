@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+html(lang="es")
+    block variable
+        -var url="http://localhost/ProyectoFinal/"
+        -var title="Page Not Found"
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title Los Ganchos: #{title}
+
+        block vendor
+            //- CSS de los vendor
+            link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous")
+            link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet")
+       
+        block custom-css
+            //-CSS que deben llevar todo aquel que extienda de template
+            link(rel="stylesheet" href=url+"/CSS/style.css")
+            link(rel="stylesheet" href=url+"/CSS/fonts.css")
+        
+        style.
+            
+            .quote{
+                font-style:italic;
+            }
+           ]
+    body
+        .container
+            .row.align-items-center.justify-content-center
+                .col-md-7
+                    .row.align-items-center.justify-content-left.quote
+                        h3 "No me quiero ir, Sr. Stark"
+                    .row.align-items-right.justify-content-center
+                        h3 -Peter Parker
+                    h4 Esta pagina no existe, posiblemente haya sido eliminada por Thanos.
+                    a(href='/')   volver al inicio

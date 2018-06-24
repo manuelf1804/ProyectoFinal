@@ -1,0 +1,23 @@
+{
+  "name": "losganchos",
+  "version": "1.0.0",
+  "description": "Proyecto Final de Desarrollo IX",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "mongo",
+    "pug"
+  ],
+  "author": "Manuel Fernandez",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3",
+    "gulp": "^3.9.1",
+    "mongoose": "^5.1.4",
+    "pug": "^2.0.3"
+  }
+}
