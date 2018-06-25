@@ -14,7 +14,7 @@ Conexion.getServicios().then(function(listServicios){//se dispara la promesa
     servs=listServicios;});
 
 //Set Importacion de Extras
-const arrs=require('./src/JS/variables.js');  //Variables que se requieren para los ciclos de repeticion
+const arrs=require('./src/js/variables.js');  //Variables que se requieren para los ciclos de repeticion
 
 //ROUTES
 app.get('/',function(req,res,next){

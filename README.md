@@ -1,6 +1,6 @@
 # Proyecto Final de Desarrollo IX ##
 
-## Pagina Web de la Lavenderia sin Nombre ##
+## Pagina Web de los Ganchos ##
 
 
 Por: Ramon Castro
@@ -8,41 +8,52 @@ Por: Ramon Castro
      Pedro Ramos 
 
 
-## Como descargar tu propia copia del servidor  ##
+## Copiar este repositorio  ##
 
-    La pagina web se alimenta de tres partes: 
-    * un servidor web que maneje los archivos estaticos(imagenes,css,javascript cuya funcion no es interactuar con el servidor), por ejemplo: Apache , Nginx, etc.
-    * una parte restful que maneje las peticiones, para esta parte se usa [express](https://expressjs.com/), express se va a encargar de renderizar archivos escritos en [Pug](https://pugjs.org)
-    * una base de datos. Para las prueas se estara usado mongoDB junto con el modelador de datos [mongoose](http://mongoosejs.com/).
+Para hacer pruebas de manera local de este repostorio: 
+* un servidor web que maneje los archivos estaticos: imagenes,css,javascript, por ejemplo: Apache , Nginx, etc.
+* una parte restful que maneje las peticiones, para esta parte se usa [express](https://expressjs.com/), express se va a encargar de renderizar archivos escritos en [Pug](https://pugjs.org)
+* una base de datos. Para las prueas se estara usado mongoDB junto con el modelador de datos [mongoose](http://mongoosejs.com/).
 
-    Asi que se pide que antes de iniciar las pruebas se tenga instalado tanto express, como mongodb y mongoose. La decision del servidor estatico no hace mucha diferancia, aunque se recomienda nginx. Si desea usar otro servidor web
-    Si desea modificar archivos .pug tambien debe tener instalado pug 
+Para las pruebas locales se configuro nginx de manera que sirviera los archivos que se encuentran en
+/var/www/html/public a traves de http://localhost:81 y que pasara todas las peticiones que recibiera hacia el puerto 80 al puerto 3022. esta configuracion esta copiada en public/
+
  
- 1. Clonar repositorio
+1. Clonar repositorio
 
-    ``` 
-    git clone https://github.com/manuelf1804/ProyectoFinal.git
+``` 
+git clone https://github.com/manuelf1804/ProyectoFinal.git
 
-    ```
- 2. Dentro de nuestra carpeta
+```
+2. Instalar las dependencias
 
-    ``` 
-    npm install
+``` 
+npm install 
 
-    ```
- 3. usar gulp
-    
-    ``` 
-    gulp
+```
+3. mover los archivos estaticos al servidor web
 
-    ```
+``` 
+gulp mover
 
- 4. Iniciar app.js, con node o nodemon 
- 
-    ``` 
-    node app.js
+```
 
-    ```
- 5. Conectarse al puerto 3022 local 
+4. Iniciar app.js, con node o nodemon 
 
+``` 
+nodemon
+
+```
+
+5. Conectarse al host local
+
+``` 
+http://localhost
+
+```
+## Copyright
+* [Start Bootstrap - One Page Wonder](https://startbootstrap.com/template-overviews/one-page-wonder/)
+Copyright 2013-2018 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-one-page-wonder/blob/gh-pages/LICENSE) license.
+* [sufee-admin-dashboard](https://colorlib.com/polygon/sufee/)
+Colorlib is the original author of the admin-dashboard template.
     
