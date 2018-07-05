@@ -30,7 +30,7 @@ servicioSchema.statics.insert = function(nombre,abri,precio,callback){
         })   
     }
 servicioSchema.statics.getAll = function(callback){
-    Servicio.find({},'_id nombre abri precio',function(err,servicios){
+    Servicio.find({},function(err,servicios){
         if(err)
             return callback(err);
         else if(!servicios)

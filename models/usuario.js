@@ -14,7 +14,77 @@ var usuarioSchema = new Schema({
     activo:Boolean,
     },{collection:'usuario'});
 
-usuarioSchema.statics.login = function(username,password,callback){
+    usuarioSchema.statics.insert = function(username,nombre,apellido,rol,direccion,edad,correo,callback){
+        Usuario.findOne({username:username},'nombre',function(err,usuario){
+            if(err){
+                return callback(err)
+            }
+            else if(usuario){
+                return callback(usuario);
+            }
+            else{
+                var data={
+                    username:username,
+                    nombre:{first:nombre,last:apellido},
+                    rol:rol,
+                    direccion:direccion,
+                    edad:edad,
+                    correo:correo};
+                Usuario.create(data,function(err){
+                    if(err)
+                        return callback(err);
+                    return callback();
+                })}
+        })   
+    }
+
+usuarioSchema.statics.getAll=function(callback){
+    Usuario.find({},function(err,users){
+        if(err) 
+        return callback(err);
+        else if(!users){
+            return callback();
+        }
+        callback(null,users);
+    })
+}
+usuarioSchema.statics.update = function(id,username,nombre,apellido,rol,direccion,edad,correo, callback){
+    Usuario.findOne({_id:id},function(err,usuario){
+        if(err)
+            return callback(err);
+        else if(!usuario){
+            return callback();
+        }
+        else{
+                usuario.username = username || usuario.username;
+                usuario.nombre.first = nombre || usuario.nombre.first;
+                usuario.nombre.last = apellido || usuario.nombre.last;
+                usuario.rol = rol || usuario.rol;
+                usuario.direccion = direccion || usuario.direccion;   
+                usuario.edad =edad || usuario.edad; 
+                usuario.correo =correo || usuario.correo;            
+                usuario.save(function(err){
+                    if(err)
+                        return callback(err);
+                    return callback(null,true);
+                });
+            }
+    })   
+}
+usuarioSchema.statics.delete = function(id, callback){
+    Usuario.findOne({_id:id},'_id',function(err,usuario){
+        if(err)
+            return callback(err);
+        else if(!usuario)
+            return callback(null,'usuario no existe');
+        Usuario.deleteOne({_id:id}, function(err){
+                if(err)
+                    return callback(err);
+                return callback();//Success
+            });
+    })  
+}
+    usuarioSchema.statics.login = function(username,password,callback){
     Usuario.findOne({username:username},'username password rol',function(err,user){
         if(err)
             return callback(err);

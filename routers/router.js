@@ -57,9 +57,16 @@ router.get("/Modificar", function (req, res, next) {
         Servicio.getAll(function(err,servicios){
             if(err)
                 next(err);
-            else
-                res.render('modificar',{title:'Modificar',menuNames:menus,servicios:servicios,username:username});
-        });    
+            else{
+                Usuario.getAll(function(err,users){
+                    if(err)
+                    next(err);
+                    else{
+                        res.render('modificar',{title:'Modificar',menuNames:menus,servicios:servicios,username:username,users:users});
+                    }
+                })
+                
+        }});    
     }
     else
         res.send('Sin Sesion Iniciada');
@@ -72,6 +79,19 @@ router.post('/Modificar/Insertar', function(req, res, next){
 			next(error);
 		else if(servicio){
 			var err = new Error('Servicio ya existente');
+			err.status = 401;
+			next(err);}
+		else
+			res.redirect('/Modificar');
+	  });
+});
+// POST DE INSERTAR UN USUARIO
+router.post('/Modificar/Insertar/usuario', function(req, res, next){
+	Usuario.insert(req.body.username,req.body.nombre,req.body.apellido,req.body.rol,req.body.direccion,req.body.edad,req.body.correo, function(error,usuario){
+		if(error)
+			next(error);
+		else if(usuario){
+			var err = new Error('Usuario ya existente');
 			err.status = 401;
 			next(err);}
 		else
@@ -96,6 +116,24 @@ router.post('/Modificar/Actualizar', function(req, res, next){
         next(error);
     }
 });
+//POST DE ACTUALIZAR usuario
+router.post('/Modificar/Actualizar/usuario', function(req, res, next){
+    if(req.session.user){
+        Usuario.update(req.body.id,req.body.username,req.body.nombre,req.body.apellido,req.body.rol,req.body.direccion,req.body.edad,req.body.correo, function(error,msg){
+            if(error)
+                next(error);
+            else if(!msg){
+                var err = new Error('Usuario no existe');
+                err.status = 401;
+                next (err);}
+            res.redirect('/Modificar');
+        });}
+    else{
+        var error = new Error('fatal');
+        error.status = 401;
+        next(error);
+    }
+});
 // POST DE ELIMINAR UN SERVICIO
 router.post('/Modificar/Eliminar', function(req, res, next){
     if(req.session.user){
@@ -104,6 +142,27 @@ router.post('/Modificar/Eliminar', function(req, res, next){
                 next(error);
             else if(msg){
                 var err = new Error('Servicio no existe');
+                err.status = 401;
+                next(err);
+            }
+            else
+                res.redirect('/Modificar');
+        });
+    }
+    else{
+        var error = new Error('fatal');
+        error.status = 401;
+        next(error);
+    }
+});
+// POST DE ELIMINAR UN USUARIO
+router.post('/Modificar/Eliminar/usuario', function(req, res, next){
+    if(req.session.user){
+        Usuario.delete(req.body.id, function(error,msg){
+            if(error)
+                next(error);
+            else if(msg){
+                var err = new Error('Usuario no existe');
                 err.status = 401;
                 next(err);
             }

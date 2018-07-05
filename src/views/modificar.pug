@@ -41,4 +41,74 @@ block replace
                                     input#precio(type='number' name='precio' step='.01')
                                 td(colspan='2' style='text-align:center')
                                     input(type='submit',value='Insertar Nuevo').btn.btn-primary
-                    
+            table.table.table-bordered.table-responsive
+                                thead.thead-dark
+                                    tr
+                                        th Username
+                                        th Nombre
+                                        th apellido
+                                        th rol
+                                        th direccion 
+                                        th edad
+                                        th correo
+                                        
+                                        th
+                                        th
+                                tbody
+                                    each usuarito in users
+                                        tr
+                                            form(action='/Modificar/Actualizar/usuario', method='POST')
+                                                td #{usuarito.username}
+                                                    br
+                                                    input#username(type='text' name='username')
+
+                                                td #{usuarito.nombre.first} 
+                                                    br
+                                                    input#nombre(type='text' name='nombre')
+                                                td #{usuarito.nombre.last} 
+                                                    br
+                                                    input#apellido(type='text' name='apellido')
+
+                                                td #{usuarito.rol} 
+                                                    br
+                                                    input#rol(type='text' name='rol')
+
+                                                td #{usuarito.direccion} 
+                                                    br
+                                                    input#direccion(type='text' name='direccion')
+
+                                                td #{usuarito.edad} 
+                                                    br
+                                                    input#edad(type='text' name='edad')
+
+                                                td #{usuarito.correo} 
+                                                    br
+                                                    input#correo(type='text' name='correo')
+
+                                                td
+                                                    input(type='hidden', value=usuarito._id, name='id')
+                                                    input(type='submit',value='Actualizar').btn.btn-success
+                                            form(action='/Modificar/Eliminar/usuario', method='POST')
+                                                    input(type='hidden', value=usuarito._id, name='id')
+                                                    td
+                                                        input(type='submit',value='Borrar').btn.btn-danger
+                                    tr   
+                                        form(action='/Modificar/Insertar/usuario', method='POST')
+                                            td 
+                                                input#username(type='text' name='username')
+                                            td 
+                                                input#nombre(type='text' name='nombre')
+                                            td 
+                                                input#apellido(type='text' name='apellido')
+                                            td
+                                                input#rol(type='text' name='rol')
+                                            td
+                                                input#direccion(type='text' name='direccion')
+                                            td
+                                                input#edad(type='text' name='edad')  
+                                            td
+                                                input#correo(type='text' name='correo')      
+
+                                            td(colspan='2' style='text-align:center')
+                                                input(type='submit',value='Insertar Nuevo').btn.btn-primary
+                                                
