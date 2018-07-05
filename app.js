@@ -1,45 +1,49 @@
 // Set Express
 const express = require('express'); 
-const app = express(); 
+const app = express();
+let session = require('express-session'); 
+let bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+let MongoStore = require('connect-mongo')(session);
 
 //Set Pug
 app.engine('pug', require('pug').__express);
-app.set('views', './src/pug');
+app.set('views', './src/views');
 app.set('view engine', 'pug');
 
-//Set Conexion
-const Conexion= require('./src/express/conexion'); 
-var servs;
-Conexion.getServicios().then(function(listServicios){//se dispara la promesa
-    servs=listServicios;});
-
-//Set Importacion de Extras
-const arrs=require('./src/js/variables.js');  //Variables que se requieren para los ciclos de repeticion
-
-//ROUTES
-app.get('/',function(req,res,next){
-    res.render('index',{title:'Home',variables:arrs,servicios:servs});
-});
-app.get("/Ordenar", function (req, res, next) {
-    res.render('ordenar',{title:'Ordenar',variables:arrs,servicios:servs});
-});
-app.get("/Nosotros", function (req, res, next) {
-    res.render('nosotros',{title:'Nosotros',variables:arrs});
-});
-app.get("/Registrar", function (req, res, next) {
-    res.render('registrar',{title:'Registrar',variables:arrs});
-});
-app.get("/Verificar", function (req, res, next) {
-    res.render('verificar',{title:'Verificar',variables:arrs});
+//Set Mongo
+let user = 'sachiel';
+let pass = 'losganchos123';
+let bd = 'losganchos';
+mongoose.connect('mongodb://'+user+':'+pass+'@localhost/'+bd+'?authDatabase='+bd);
+let db = mongoose.connection;
+db.on('error',console.error.bind(console,'Error de Conexion: '));
+db.once('open',() => {
+	console.log('Connected to Mongo Database');
 });
 
-// En caso de error se dispara este middleware
+
+
+// Middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(session({
+	secret: 'work hard',
+	resave: true,
+	saveUninitialized: false,
+	store: new MongoStore({
+		mongooseConnection: db
+	})
+  }));
 app.use(function(err, req, res, next) {
 if(err.message.search('Failed to lookup view')==0){
     res.render('PageNotFound');}
 else{
     console.log(err);
 }});
+// Set Routes 
+let routes = require('./routers/router');
+app.use('/',routes);
 
 const port = process.env.NODEPORT || 3022 ;
 

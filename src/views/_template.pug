@@ -1,6 +1,5 @@
 <!DOCTYPE HTML>
 html.no-js(lang="es")
-
   head
     meta(charset="utf-8")
     meta(http-equiv="X-UA-Compatible" content="IE=edge")
@@ -29,7 +28,7 @@ html.no-js(lang="es")
           a.navbar-brand(href="./") Los Ganchos
         #main-menu.main-menu.collapse.navbar-collapse
           ul.nav.navbar-nav
-            each r in variables.refs
+            each r in menuNames
                 if(r.nombre==title)
                     li.active
                         a(href=r.nombre)
@@ -56,7 +55,11 @@ html.no-js(lang="es")
           .page-header.float-right
             .page-title
               ol.breadcrumb.text-right
-                li.active Dashboard
+                if(username == '')
+                  li.active 
+                    a(href='/Login') Sign Up
+                else 
+                  li.active #{username}
       .content.mt-3
         block replace
       // .content

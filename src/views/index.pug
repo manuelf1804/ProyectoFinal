@@ -25,7 +25,10 @@ html(lang="es")
           ul.navbar-nav.ml-auto
               a.nav-link(href="Ordenar") Ordenar
               a.nav-link(href="Verificar") Verificar
-              a.nav-link(href="#") Sign In
+              if(username=='')
+                a.nav-link(href="/Login") Sign In
+              else
+                a.nav-link(href="#") #{username}
     header.masthead.text-center.text-white
       .masthead-content
         .container
