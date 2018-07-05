@@ -1,0 +1,79 @@
+doctype html
+html(lang="es")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    meta(name="description" content="")
+    meta(name="author" content="")
+    - var url = 'http://localhost:81/public';
+    title Los Ganchos
+    //- Bootstrap core CSS
+    link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous")
+    //- Custom fonts for this template
+    link(href="https://fonts.googleapis.com/css?family=Lobster|Quicksand|Quattrocento+Sans" rel="stylesheet")
+    //- Custom styles for this template
+    link(href=url+"/vendor/css/one-page-wonder.css" rel="stylesheet")
+  body
+    // Navigation
+    nav.navbar.navbar-expand-lg.navbar-dark.navbar-custom.fixed-top
+      .container
+        a.navbar-brand(href="#") Home
+        
+        button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation")
+          span.navbar-toggler-icon
+        #navbarResponsive.collapse.navbar-collapse
+          ul.navbar-nav.ml-auto
+              a.nav-link(href="Ordenar") Ordenar
+              a.nav-link(href="Verificar") Verificar
+              if(username=='')
+                a.nav-link(href="/Login") Sign In
+              else
+                a.nav-link(href="#") #{username}
+    header.masthead.text-center.text-white
+      .masthead-content
+        .container
+          h1.masthead-heading.mb-0 Los Ganchos
+          h2.masthead-subheading.mb-0 Servicios de lavanderia, desde tu casa
+          a.btn.btn-secondary.btn-xl.rounded-pill.mt-5(href="Nosotros") Descubre mas sobre nosotros
+    section
+      .container
+        .row.align-items-center
+          .col-lg-6.order-lg-2
+            .p-5
+              img.img-fluid.rounded-circle(src=url+"/img/desc.jpg" alt="")
+          .col-lg-6.order-lg-1
+            .p-5
+              h2.display-4 Desde cualquier lado
+              p
+                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.
+    section
+      .container
+        .row.align-items-center
+          .col-lg-6
+            .p-5
+              img.img-fluid.rounded-circle(src=url+"/img/02.jpg" alt="")
+          .col-lg-6
+            .p-5
+              h2.display-4 We salute you!
+              p
+                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.
+    section
+      .container
+        .row.align-items-center
+          .col-lg-6.order-lg-2
+            .p-5
+              img.img-fluid.rounded-circle(src=url+"/img/03.jpg" alt="")
+          .col-lg-6.order-lg-1
+            .p-5
+              h2.display-4 Let there be rock!
+              p
+                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.
+    // Footer
+    footer.py-5.bg-black
+      .container
+        p.m-0.text-center.text-white.small Copyright © Los Ganchos 2018
+      // /.container
+    // Bootstrap core JavaScript
+    script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous")
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous")

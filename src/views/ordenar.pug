@@ -1,0 +1,62 @@
+extends _template.pug
+
+append customCss
+    link(rel="stylesheet" href=url+"/css/botonesOrdenar.css")
+    
+
+block replace
+    .container
+        .row
+            .col-xl-6
+                .card
+                    .card-body
+                        .row
+                            .col-sm-4
+                                h4.card-title.mb-0 Precios
+                        .row
+                            .col-xl-10.offset-xl-1
+                                table.table
+                                    thead.thead-dark
+                                        tr
+                                            th(scope='col') Nombre
+                                            th(scope='col') Abreviatura
+                                            th(scope='col') Precio
+                                    tbody
+                                        each serv in servicios
+                                            tr                   
+                                                td #{serv.nombre}
+                                                td #{serv.abri}
+                                                td $#{parseFloat(serv.precio).toFixed(2)}
+            .col-xl-3.col-lg-6
+                .card
+                    .card-body
+                        .stat-widget-one
+                            .stat-icon.dib
+                                i.ti-money.text-success.border-success
+                            .stat-content.dib
+                                .stat-text Total a pagar
+                                .stat-digit 0
+    .container           
+        .row
+            h1.title Nueva Orden
+            p Agregar nuevo:
+            button.btn.btn-outline-secondary.add#camisa Camisa
+            button.btn.btn-outline-secondary.add#pantalon Pantalon
+            button.btn.btn-outline-secondary.add#traje Traje
+            button.btn.btn-outline-secondary.add#vestido Vestido
+            button.btn.btn-outline-secondary.add#falda Falda
+            .d-flex.align-content-center.flex-wrap
+                form.form-inline
+                    .form-group.mb-2.ordenar-form
+                        label(for="qty") Cantidad:
+                        input.form-control#qty(type="number")
+                    .form-group.ordenar-form
+                        label Seleccione los servicios:
+                        each serv in servicios
+                            .form-check.form-check-inline
+                                input.form-check-input(type="checkbox" value=serv.nombre id=serv.nombre)
+                                label.form-check-label(for="serv.nombre") #{serv.abri}
+                        button.btn.btn-danger eliminar
+append customJs
+    script(src=url+'/js/btnOrdenar.js')
+    

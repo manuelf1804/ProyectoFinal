@@ -1,0 +1,44 @@
+extends _template
+
+block replace
+    .container
+        .row
+            table.table.table-bordered.table-responsive
+                    thead.thead-dark
+                        tr
+                            th Nombre 
+                            th Abreviatura
+                            th Precio
+                            th
+                            th
+                    tbody
+                        each servi in servicios
+                            tr
+                                form(action='/Modificar/Actualizar', method='POST')
+                                    td #{servi.nombre}
+                                        br
+                                        input#nombre(type='text' name='nombre')
+                                    td #{servi.abri} 
+                                        br
+                                        input#abri(type='text' name='abri')
+                                    td $#{parseFloat(servi.precio).toFixed(2)}
+                                        br
+                                        input#precio(type='number' name='precio' step='.01')
+                                    td
+                                        input(type='hidden', value=servi._id, name='id')
+                                        input(type='submit',value='Actualizar').btn.btn-success
+                                form(action='/Modificar/Eliminar', method='POST')
+                                        input(type='hidden', value=servi._id, name='id')
+                                        td
+                                            input(type='submit',value='Borrar').btn.btn-danger
+                        tr   
+                            form(action='/Modificar/Insertar', method='POST')
+                                td 
+                                    input#nombre(type='text' name='nombre')
+                                td 
+                                    input#abri(type='text' name='abri')
+                                td 
+                                    input#precio(type='number' name='precio' step='.01')
+                                td(colspan='2' style='text-align:center')
+                                    input(type='submit',value='Insertar Nuevo').btn.btn-primary
+                    
