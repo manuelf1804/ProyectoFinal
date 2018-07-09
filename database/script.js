@@ -1,3 +1,13 @@
+db.usuario.insertOne({
+    username:'manuelf1804',
+    password:'manumanu',
+    nombre:{first:'Manuel',last:'Fernandez'},
+    rol:'admin',
+    direccion:'Punta',
+    edad:22,
+    correo:'manfer1804@gmail.com',
+    activo:true,  
+})
 db.servicio.insertMany([
     {nombre:'Planchado',
      abri:'pln',

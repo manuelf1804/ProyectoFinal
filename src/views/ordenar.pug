@@ -2,7 +2,12 @@ extends _template.pug
 
 append customCss
     link(rel="stylesheet" href=url+"/css/botonesOrdenar.css")
-    
+    style.
+        .numerito{
+            width:50px;
+            content-align:center;
+        }
+        
 
 block replace
     .container
@@ -12,10 +17,10 @@ block replace
                     .card-body
                         .row
                             .col-sm-4
-                                h4.card-title.mb-0 Precios
+                                h3.card-title.mb-0 Precios
                         .row
                             .col-xl-10.offset-xl-1
-                                table.table
+                                table.table(style="margin-top:15px;")
                                     thead.thead-dark
                                         tr
                                             th(scope='col') Nombre
@@ -35,28 +40,35 @@ block replace
                                 i.ti-money.text-success.border-success
                             .stat-content.dib
                                 .stat-text Total a pagar
-                                .stat-digit 0
-    .container           
+                                .stat-digit
+                                    span#total(value='0') 0      
         .row
-            h1.title Nueva Orden
-            p Agregar nuevo:
-            button.btn.btn-outline-secondary.add#camisa Camisa
-            button.btn.btn-outline-secondary.add#pantalon Pantalon
-            button.btn.btn-outline-secondary.add#traje Traje
-            button.btn.btn-outline-secondary.add#vestido Vestido
-            button.btn.btn-outline-secondary.add#falda Falda
-            .d-flex.align-content-center.flex-wrap
-                form.form-inline
-                    .form-group.mb-2.ordenar-form
-                        label(for="qty") Cantidad:
-                        input.form-control#qty(type="number")
-                    .form-group.ordenar-form
-                        label Seleccione los servicios:
-                        each serv in servicios
-                            .form-check.form-check-inline
-                                input.form-check-input(type="checkbox" value=serv.nombre id=serv.nombre)
-                                label.form-check-label(for="serv.nombre") #{serv.abri}
-                        button.btn.btn-danger eliminar
-append customJs
-    script(src=url+'/js/btnOrdenar.js')
+            .col-xl-10.offset-xl-1
+                .card
+                    .card-header
+                        h3.title Nueva Orden
+                    .card-body.card-block
+                        form#orden(action='/factura', method='POST')
+                            table.table(style="margin-top:15px;")
+                                thead.thead-dark
+                                    tr
+                                        th Nombre
+                                        each serv in servicios
+                                            th(scope='col') #{serv.abri}
+                                tbody
+                                    each val in ['camisas','vestidos','faldas','sacos']
+                                        tr 
+                                            td #{val}
+                                            each serv in servicios
+                                                td.valor
+                                                    input.precio(type='hidden' value=serv.precio)
+                                                    input.qty(min='0',max='99',type='number' value='0' name=serv.nombre)
+                            input.btn.btn-primary(type='submit' value='listo')                   
+
+                
+                    
+                    
+
+append customjs
+    script(src=url+'/js/datatoggle.js')
     

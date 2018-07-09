@@ -14,8 +14,12 @@ Array.prototype.push.apply(menuAdmin,menu);
 
 //ROUTES
 router.get('/',function(req,res,next){
+    if(req.session.user)
+        menus = (req.session.user.rol === 'admin') ? menuAdmin : menu;
+    else
+        menus = menu;
     username = (req.session.user === undefined) ? '' : req.session.user.username;
-    res.render('index',{title:'Home',username:username});
+    res.render('index',{title:'Home',username:username,menuNames:menus});
 });
 router.get("/Ordenar", function (req, res, next) {
     if(req.session.user){
@@ -176,6 +180,9 @@ router.post('/Modificar/Eliminar/usuario', function(req, res, next){
         next(error);
     }
 });
+router.post('/factura', function(req, res, next){
+    console.log(req.body);
+  });
 router.get("/Nosotros", function (req, res, next) {
     res.render('nosotros',{title:'Nosotros',menuNames:menus,username:username});
 });
@@ -185,5 +192,9 @@ router.get("/Registrar", function (req, res, next) {
 router.get("/Verificar", function (req, res, next) {
     res.render('verificar',{title:'Verificar',menuNames:menus,username:username});
 });
-
+router.get("/logout", function (req, res, next) {
+   if(req.session)
+        req.session.destroy();
+    res.redirect('/');
+});
 module.exports = router;

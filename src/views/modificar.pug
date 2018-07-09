@@ -71,7 +71,9 @@ block replace
 
                                                 td #{usuarito.rol} 
                                                     br
-                                                    input#rol(type='text' name='rol')
+                                                    select#rol(name="rol")
+                                                        option(value="admin") admin
+                                                        option(value='cliente') cliente
 
                                                 td #{usuarito.direccion} 
                                                     br
@@ -101,7 +103,9 @@ block replace
                                             td 
                                                 input#apellido(type='text' name='apellido')
                                             td
-                                                input#rol(type='text' name='rol')
+                                                select#rol(name="rol")
+                                                        option(value="admin") admin
+                                                        option(value='cliente') cliente
                                             td
                                                 input#direccion(type='text' name='direccion')
                                             td

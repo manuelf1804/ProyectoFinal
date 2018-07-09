@@ -1,13 +1,11 @@
-$("#wrapper").toggleClass("toggled");
-function togglear(mq) {
-    if ((mq.matches) && ($('.toggled').length > 0) ){ 
-        $("#wrapper").toggleClass("toggled");
-    } 
-}
-$("#menu-toggle").click(function(e) {
-    e.preventDefault();
-    $("#wrapper").toggleClass("toggled");
-    });
-var x = window.matchMedia("(max-width: 700px)")
-togglear(x);
-x.addListener(togglear);  
+$(document).ready(function(){
+    $('#orden').change(function(){
+    let arr=0;
+        $('.valor').each(function(){
+            let precio = ($(this).find('.precio').val());
+            let qty = parseInt($(this).find('.qty').val());
+            arr += (precio*qty);
+        })
+    $('#total').text(arr.toFixed(2));
+    })
+});

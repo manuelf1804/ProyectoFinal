@@ -35,16 +35,14 @@ app.use(session({
 		mongooseConnection: db
 	})
   }));
-app.use(function(err, req, res, next) {
-if(err.message.search('Failed to lookup view')==0){
-    res.render('PageNotFound');}
-else{
-    console.log(err);
-}});
-// Set Routes 
+ 
 let routes = require('./routers/router');
 app.use('/',routes);
+app.use(function(req,res){
+	res.render('PageNotFound');
+});
 
+// Set Routes
 const port = process.env.NODEPORT || 3022 ;
 
 app.listen(port, function() {

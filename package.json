@@ -4,7 +4,8 @@
   "description": "Proyecto Final de Desarrollo IX",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "pre": "gulp mover && node app.js "
   },
   "keywords": [
     "node",
