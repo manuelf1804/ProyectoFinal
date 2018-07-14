@@ -1,0 +1,20 @@
+extends _template
+
+block replace
+    h1 Factura:
+    - let price = 0;
+    each servicio in servicios
+        - let acum = 0;
+        each value in factura[servicio.nombre]
+            if(value != '0')
+                - acum += parseInt(value);
+        if(acum != 0)
+            h3 #{acum} x #{servicio.nombre}
+                span(style='font-weight:bold; margin-left:5px') #{(acum * servicio.precio).toFixed(2)}
+                - price += acum * servicio.precio;
+    h2 Subtotal : #{price.toFixed(2)}
+    h2 Itbms: #{(price * .07).toFixed(2)}
+    h1 total a pagar $#{(price*1.07).toFixed(2)}
+        
+  
+        

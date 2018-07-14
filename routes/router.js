@@ -3,13 +3,12 @@ let router = express.Router();
 let Usuario = require('../models/usuario');
 let Servicio  = require('../models/servicio');
 let Orden = require('../models/orden');
-let Ropa  = require('../models/ropa');
 let username;
 let menus = new Array();
 
 //prev
-let menu=require('../src/js/menus').menus;
-let menuAdmin=require('../src/js/menus').menusAdmin;
+let menu = require('../src/js/menus').menus;
+let menuAdmin = require('../src/js/menus').menusAdmin;
 Array.prototype.push.apply(menuAdmin,menu);
 
 //ROUTES
@@ -36,9 +35,6 @@ router.get("/Ordenar", function (req, res, next) {
     });    
 });
 
-router.get("/Login", function (req, res, next) {
-    res.render('login',{title:'Login',variables:menus});
-});
 router.post("/Login", function (req, res, next) {
     Usuario.login(req.body.user, req.body.pass, function(err,user){
         if(err)
@@ -50,7 +46,7 @@ router.post("/Login", function (req, res, next) {
         }
         else{
             req.session.user=user;
-            res.redirect('/');
+            res.redirect('back');
         }
     });
 });
@@ -175,13 +171,20 @@ router.post('/Modificar/Eliminar/usuario', function(req, res, next){
         });
     }
     else{
-        var error = new Error('fatal');
+        let error = new Error('fatal');
         error.status = 401;
         next(error);
     }
 });
 router.post('/factura', function(req, res, next){
-    console.log(req.body);
+    let fact = req.body;
+    console.log(fact);
+    Servicio.getAll(function(err,servicios){
+        if(err)
+            next(err);
+        else{
+            res.render('factura',{title:'Factura',menuNames:menus,username:username,factura:fact,servicios:servicios});
+        }});
   });
 router.get("/Nosotros", function (req, res, next) {
     res.render('nosotros',{title:'Nosotros',menuNames:menus,username:username});

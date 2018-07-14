@@ -1,6 +1,6 @@
-var gulp = require('gulp');
+let gulp = require('gulp');
 
-var paths = {
+let paths = {
     static: {
         src:'./public/**',
         dest:'/var/www/html/public/'
@@ -9,5 +9,6 @@ var paths = {
 gulp.task('mover',function(){
     return gulp.src(paths.static.src).pipe(gulp.dest(paths.static.dest));
 });
-gulp.task('dev',function() {
-    gulp.watch(paths.static.src, ['mover']);});
+gulp.task('dev',function(){
+    gulp.watch(paths.static.src, ['mover']);
+});

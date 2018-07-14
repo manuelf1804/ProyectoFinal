@@ -14,6 +14,9 @@ html(lang="es")
     link(href="https://fonts.googleapis.com/css?family=Lobster|Quicksand|Quattrocento+Sans" rel="stylesheet")
     //- Custom styles for this template
     link(href=url+"/vendor/css/one-page-wonder.css" rel="stylesheet")
+    style.
+      ul.dropdown-lr {
+        width: 150px;}
   body
     // Navigation
     nav.navbar.navbar-expand-lg.navbar-dark.navbar-custom.fixed-top
@@ -27,12 +30,24 @@ html(lang="es")
               each menu in menuNames
                 a.nav-link(href=menu.nombre) #{menu.nombre}
               if(username=='')
-                a.nav-link(href="/Login") Sign In
+                a.nav-link(href="" data-toggle='dropdown') Login
+                ul.dropdown-menu.dropdown-menu-right.mt-2
+                  li.px-4.py-2
+                    form.form(role='form' action='/Login' method='POST')
+                      .form-group
+                        input#user.form-control.form-control-sm(name='user' placeholder='Usuario', type='text', required)
+                      .form-group
+                        input#pass.form-control.form-control-sm(name='pass' placeholder='Contraseña', type='password', required)
+                      .form-group
+                        button.btn.btn-primary.btn-block(type='submit') Login
+                      .form-group.text-center
+                        small
+                          a(href='#') Registrarme?
               else
-                  .dropdown
-                    .btn.btn-primary.dropdown-toggle#ddMenu(type='button' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") #{username}
-                    .dropdown-menu(aria-labelledby="dropdownMenuButton")
-                      a.dropdown-item(href='/logout') logout
+                a.nav-link(href="" data-toggle='dropdown') #{username}
+                ul.dropdown-menu.dropdown-menu-right.mt-2
+                  li.px-4.py-2
+                    a.dropdown-item(href='/Logout') Logout
     header.masthead.text-center.text-white
       .masthead-content
         .container

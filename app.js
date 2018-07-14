@@ -36,11 +36,14 @@ app.use(session({
 	})
   }));
  
-let routes = require('./routers/router');
+let routes = require('./routes/router');
 app.use('/',routes);
 app.use(function(req,res){
-	res.render('PageNotFound');
+	res.render('PageNotFound');//Error 404
 });
+app.use(function(err,req,res,next){
+	res.render('error',{error:err})//resto de los errores
+})
 
 // Set Routes
 const port = process.env.NODEPORT || 3022 ;

@@ -33,7 +33,3 @@ db.servicio.insertMany([
     precio:3.00,
     activo:true
 }]);
-
-
-
-

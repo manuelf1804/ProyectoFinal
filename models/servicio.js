@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
-var Schema = mongoose.Schema;
+let Schema = mongoose.Schema;
 
-var servicioSchema = new Schema({
+let servicioSchema = new Schema({
     nombre:String,
     abri:String,
     precio: Number,
@@ -12,7 +12,7 @@ var servicioSchema = new Schema({
 servicioSchema.statics.insert = function(nombre,abri,precio,callback){
         Servicio.findOne({nombre:nombre},'nombre',function(err,servicio){
             if(err){
-                return callback(err)
+                return callback(err);
             }
             else if(servicio){
                 return callback(servicio);
@@ -70,6 +70,6 @@ servicioSchema.statics.delete = function(id, callback){
             });
     })  
 }
-var Servicio = mongoose.model('Servicio', servicioSchema);
+let Servicio = mongoose.model('Servicio', servicioSchema);
 
 module.exports = Servicio;

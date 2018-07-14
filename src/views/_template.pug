@@ -16,7 +16,7 @@ html.no-js(lang="es")
     link(rel="stylesheet" href=url+"/vendor/scss/style.css")
     link(href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css")
    
-    block customCss
+    block customcss
         link(rel="stylesheet" href=url+"/css/style.css")
   body
     // Left Panel
@@ -55,11 +55,25 @@ html.no-js(lang="es")
           .page-header.float-right
             .page-title
               ol.breadcrumb.text-right
-                if(username == '')
-                  li.active 
-                    a(href='/Login') Sign Up
-                else 
-                  li.active #{username}
+                if(username=='')
+                  a.nav-link(href="" data-toggle='dropdown') Login
+                  ul.dropdown-menu.dropdown-menu-right
+                    li.px-4.py-2
+                      form.form(role='form' action='/Login' method='POST')
+                        .form-group
+                          input#user.form-control.form-control-sm(name='user' placeholder='Usuario', type='text', required)
+                        .form-group
+                          input#pass.form-control.form-control-sm(name='pass' placeholder='Contraseña', type='password', required)
+                        .form-group
+                          button.btn.btn-primary.btn-block(type='submit') Login
+                        .form-group.text-center
+                          small
+                            a(href='/Registrarme') Registrarme
+                else
+                  a.nav-link(href="" data-toggle='dropdown') #{username}
+                  ul.dropdown-menu.dropdown-menu-right.mt-2
+                    li.px-4.py-2
+                      a.dropdown-item(href='/Logout') Logout
       .content.mt-3
         block replace
     

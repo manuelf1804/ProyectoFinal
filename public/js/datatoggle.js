@@ -1,11 +1,15 @@
 $(document).ready(function(){
-    $('#orden').change(function(){
-    let arr=0;
+    function calcular(){
+        let arr=0;
         $('.valor').each(function(){
             let precio = ($(this).find('.precio').val());
             let qty = parseInt($(this).find('.qty').val());
-            arr += (precio*qty);
+            arr += (precio*qty)*1.07;
         })
-    $('#total').text(arr.toFixed(2));
+        $('#total').text(arr.toFixed(2));
+    }
+    calcular();
+    $('#orden').change(function(){
+        calcular();
     })
 });
