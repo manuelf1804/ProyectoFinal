@@ -15,16 +15,16 @@ app.set('view engine', 'pug');
 let user = 'sachiel';
 let pass = 'losganchos123';
 let bd = 'losganchos';
-mongoose.connect('mongodb://'+user+':'+pass+'@localhost/'+bd+'?authDatabase='+bd);
+let server = '192.168.1.109:27017';
+mongoose.connect('mongodb://'+user+':'+pass+'@'+server+'/'+bd+'?authDatabase='+bd);
 let db = mongoose.connection;
 db.on('error',console.error.bind(console,'Error de Conexion: '));
 db.once('open',() => {
 	console.log('Connected to Mongo Database');
 });
 
-
-
 // Middleware
+app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({

@@ -1,6 +1,6 @@
 db.usuario.insertOne({
     username:'manuelf1804',
-    password:'manumanu',
+    password:'$2b$10$ZNifQiUgJg3MApvk/xSvn.tL4EK4PfT3M5nyFObABOluCypbjAXne',
     nombre:{first:'Manuel',last:'Fernandez'},
     rol:'admin',
     direccion:'Punta',
