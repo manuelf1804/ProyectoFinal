@@ -1,0 +1,4 @@
+# ignorar carpeta modulos 
+/node_modules
+# .logs de node
+*.log

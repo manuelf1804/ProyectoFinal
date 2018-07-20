@@ -1,0 +1,75 @@
+extends _template
+
+append customcss
+    link(rel="stylesheet" href=url+"/css/botonesOrdenar.css")
+    style.
+        .numerito{
+            width:60px;
+        }
+        input{
+            text-align:center;
+        }
+        
+block replace
+    .container
+        .row
+            .col-xl-6
+                .card
+                    .card-body
+                        .row
+                            .col-sm-4
+                                h3.card-title.mb-0 Precios
+                        .row
+                            .col-xl-10.offset-xl-1
+                                table.table(style="margin-top:15px;")
+                                    thead.thead-dark
+                                        tr
+                                            th(scope='col') Nombre
+                                            th(scope='col') Abreviatura
+                                            th(scope='col') Precio
+                                    tbody
+                                        each serv in servicios
+                                            tr                   
+                                                td #{serv.nombre}
+                                                td #{serv.abri}
+                                                td $#{parseFloat(serv.precio).toFixed(2)}
+            .col-xl-3.col-lg-6
+                .card
+                    .card-body
+                        .stat-widget-one
+                            .stat-icon.dib
+                                i.ti-money.text-success.border-success
+                            .stat-content.dib
+                                .stat-text Total a pagar
+                                .stat-digit
+                                    span#total(value='0') 0.00      
+        .row
+            .col-xl-12
+                .card
+                    .card-header
+                        h3.title Nueva Orden
+                    .card-body.card-block
+                        form#orden(action='/factura', method='POST')
+                            .table-responsive
+                                table.table(style="margin-top:15px;")
+                                    thead.thead-dark
+                                        tr
+                                            th Nombre
+                                            each serv in servicios
+                                                th(scope='col') #{serv.abri}
+                                    tbody
+                                        each val in ['camisas','vestidos','faldas','sacos']
+                                            tr 
+                                                td #{val}
+                                                each serv in servicios
+                                                    td.valor
+                                                        input(name =tipo type='hidden' value=val)
+                                                        input.precio(type='hidden' value=serv.precio)
+                                                        input.qty(min='0',max='99',type='number' value='0' name=serv.nombre)
+                                if(!username)
+                                    span(style='color:red') Porfavor logear antes de realizar la orden
+                                else
+                                    input.btn.btn-primary(type='submit' value='listo')                   
+
+append customjs
+    script(src=url+'/js/datatoggle.js')  

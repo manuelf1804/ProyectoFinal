@@ -1,0 +1,39 @@
+extends _template.pug
+
+block custom-css
+    link(rel="icon" href=url+"/IMG/favicon.ico")
+    link(rel="stylesheet" href=url+"/CSS/style.css")
+    link(rel="stylesheet" href=url+"/CSS/fonts.css")
+block navbar
+//- Para que salga vacio
+block sidebar
+//- Para que salga vacio
+block replace
+    h1.title Registrarme
+        img#logo(src=url+"/IMG/gancho.png")
+    block formulario
+        form.row
+            p.Explicacion
+            | Se le pide acontinuacion que llene los siguientes campos para poder registrarse.
+            .col-md-11.offset-md-1
+                .form-group.row
+                    label.col-sm-3.col-form-label(for='nom') Nombre:
+                    .col-md-8
+                        input.form-control.border.border-dark#nom(type="text", name="nom")
+                .form-group.row
+                    label.col-sm-3.col-form-label(for='ape') Apellido:
+                    .col-md-8
+                        input.form-control.border.border-dark#ape(type="text", name="ape")
+                .form-group.row
+                    label.col-sm-3.col-form-label(for='dir') Direccion:
+                    .col-md-8
+                        input.form-control.border.border-dark#dir(type="text", name="dir")
+                .form-group.row
+                    label.col-sm-3.col-form-label(for='edad') Nombre:
+                    .col-md-8
+                        input.form-control.border.border-dark#edad(type="number", name="edad")
+                .form-group.row
+                    label.col-sm-3.col-form-label(for='email') Cedula:
+                    .col-md-8
+                        input.form-control.border.border-dark#email(type="email", name="email")
+                button#btn.btn.btn-dark.float-right Registrarme

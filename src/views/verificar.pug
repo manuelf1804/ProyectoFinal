@@ -1,0 +1,16 @@
+extends _template.pug
+
+block replace
+    p Por favor ingrese los siguientes datos para poder ver el estado de la orden
+    .midivsito
+        .row
+            .col-md-11.offset-md-1
+                .form-group.row
+                    label.col-sm-3.col-form-label(for='ido') Codigo de Orden:
+                    .col-md-8
+                        input.form-control.border.border-dark#ido(type="text", name="ido")
+                .form-group.row
+                    label.col-sm-3.col-form-label(for='str') Cedula:
+                    .col-md-8
+                        input.form-control.border.border-dark#str(type="text", name="str")
+                button#btn.btn.btn-dark.float-right Buscar
