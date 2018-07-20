@@ -3,116 +3,119 @@ extends _template
 block replace
     .container
         .row
-            table.table.table-bordered.table-responsive
-                    thead.thead-dark
-                        tr
-                            th Nombre 
-                            th Abreviatura
-                            th Precio
-                            th
-                            th
-                    tbody
-                        each servi in servicios
+            .col-xl-12
+                table.table
+                        thead.thead-dark
                             tr
-                                form(action='/Modificar/Actualizar', method='POST')
-                                    td #{servi.nombre}
-                                        br
-                                        input#nombre(type='text' name='nombre')
-                                    td #{servi.abri} 
-                                        br
-                                        input#abri(type='text' name='abri')
-                                    td $#{parseFloat(servi.precio).toFixed(2)}
-                                        br
-                                        input#precio(type='number' name='precio' step='.01')
-                                    td
-                                        input(type='hidden', value=servi._id, name='id')
-                                        input(type='submit',value='Actualizar').btn.btn-success
-                                form(action='/Modificar/Eliminar', method='POST')
-                                        input(type='hidden', value=servi._id, name='id')
+                                th Nombre 
+                                th Abreviatura
+                                th Precio
+                                th
+                                th
+                        tbody
+                            each servi in servicios
+                                tr
+                                    form(action='/Modificar/Actualizar', method='POST')
+                                        td #{servi.nombre}
+                                            br
+                                            input#nombre(type='text' name='nombre')
+                                        td #{servi.abri} 
+                                            br
+                                            input#abri(type='text' name='abri')
+                                        td $#{parseFloat(servi.precio).toFixed(2)}
+                                            br
+                                            input#precio(type='number' name='precio' step='.01')
                                         td
-                                            input(type='submit',value='Borrar').btn.btn-danger
-                        tr   
-                            form(action='/Modificar/Insertar', method='POST')
-                                td 
-                                    input#nombre(type='text' name='nombre')
-                                td 
-                                    input#abri(type='text' name='abri')
-                                td 
-                                    input#precio(type='number' name='precio' step='.01')
-                                td(colspan='2' style='text-align:center')
-                                    input(type='submit',value='Insertar Nuevo').btn.btn-primary
-            table.table.table-bordered.table-responsive
-                                thead.thead-dark
-                                    tr
-                                        th Username
-                                        th Nombre
-                                        th apellido
-                                        th rol
-                                        th direccion 
-                                        th edad
-                                        th correo
-                                        
-                                        th
-                                        th
-                                tbody
-                                    each usuarito in users
+                                            input(type='hidden', value=servi._id, name='id')
+                                            input(type='submit',value='Actualizar').btn.btn-success
+                                    form(action='/Modificar/Eliminar', method='POST')
+                                            input(type='hidden', value=servi._id, name='id')
+                                            td
+                                                input(type='submit',value='Borrar').btn.btn-danger
+                            tr   
+                                form(action='/Modificar/Insertar', method='POST')
+                                    td 
+                                        input#nombre(type='text' name='nombre')
+                                    td 
+                                        input#abri(type='text' name='abri')
+                                    td 
+                                        input#precio(type='number' name='precio' step='.01')
+                                    td(colspan='2' style='text-align:center')
+                                        input(type='submit',value='Insertar Nuevo').btn.btn-primary
+        .row
+            .col-xl-12
+                table.table.table-bordered.table-responsive
+                                    thead.thead-dark
                                         tr
-                                            form(action='/Modificar/Actualizar/usuario', method='POST')
-                                                td #{usuarito.username}
-                                                    br
-                                                    input#username(type='text' name='username')
+                                            th Username
+                                            th Nombre
+                                            th apellido
+                                            th rol
+                                            th direccion 
+                                            th edad
+                                            th correo
+                                            
+                                            th
+                                            th
+                                    tbody
+                                        each usuarito in users
+                                            tr
+                                                form(action='/Modificar/Actualizar/usuario', method='POST')
+                                                    td #{usuarito.username}
+                                                        br
+                                                        input#username(type='text' name='username')
 
-                                                td #{usuarito.nombre.first} 
-                                                    br
-                                                    input#nombre(type='text' name='nombre')
-                                                td #{usuarito.nombre.last} 
-                                                    br
-                                                    input#apellido(type='text' name='apellido')
+                                                    td #{usuarito.nombre.first} 
+                                                        br
+                                                        input#nombre(type='text' name='nombre')
+                                                    td #{usuarito.nombre.last} 
+                                                        br
+                                                        input#apellido(type='text' name='apellido')
 
-                                                td #{usuarito.rol} 
-                                                    br
-                                                    select#rol(name="rol")
-                                                        option(value="admin") admin
-                                                        option(value='cliente') cliente
+                                                    td #{usuarito.rol} 
+                                                        br
+                                                        select#rol(name="rol")
+                                                            option(value="admin") admin
+                                                            option(value='cliente') cliente
 
-                                                td #{usuarito.direccion} 
-                                                    br
-                                                    input#direccion(type='text' name='direccion')
+                                                    td #{usuarito.direccion} 
+                                                        br
+                                                        input#direccion(type='text' name='direccion')
 
-                                                td #{usuarito.edad} 
-                                                    br
-                                                    input#edad(type='text' name='edad')
+                                                    td #{usuarito.edad} 
+                                                        br
+                                                        input#edad(type='text' name='edad')
 
-                                                td #{usuarito.correo} 
-                                                    br
-                                                    input#correo(type='text' name='correo')
+                                                    td #{usuarito.correo} 
+                                                        br
+                                                        input#correo(type='text' name='correo')
 
-                                                td
-                                                    input(type='hidden', value=usuarito._id, name='id')
-                                                    input(type='submit',value='Actualizar').btn.btn-success
-                                            form(action='/Modificar/Eliminar/usuario', method='POST')
-                                                    input(type='hidden', value=usuarito._id, name='id')
                                                     td
-                                                        input(type='submit',value='Borrar').btn.btn-danger
-                                    tr   
-                                        form(action='/Modificar/Insertar/usuario', method='POST')
-                                            td 
-                                                input#username(type='text' name='username')
-                                            td 
-                                                input#nombre(type='text' name='nombre')
-                                            td 
-                                                input#apellido(type='text' name='apellido')
-                                            td
-                                                select#rol(name="rol")
-                                                        option(value="admin") admin
-                                                        option(value='cliente') cliente
-                                            td
-                                                input#direccion(type='text' name='direccion')
-                                            td
-                                                input#edad(type='text' name='edad')  
-                                            td
-                                                input#correo(type='text' name='correo')      
+                                                        input(type='hidden', value=usuarito._id, name='id')
+                                                        input(type='submit',value='Actualizar').btn.btn-success
+                                                form(action='/Modificar/Eliminar/usuario', method='POST')
+                                                        input(type='hidden', value=usuarito._id, name='id')
+                                                        td
+                                                            input(type='submit',value='Borrar').btn.btn-danger
+                                        tr   
+                                            form(action='/Modificar/Insertar/usuario', method='POST')
+                                                td 
+                                                    input#username(type='text' name='username')
+                                                td 
+                                                    input#nombre(type='text' name='nombre')
+                                                td 
+                                                    input#apellido(type='text' name='apellido')
+                                                td
+                                                    select#rol(name="rol")
+                                                            option(value="admin") admin
+                                                            option(value='cliente') cliente
+                                                td
+                                                    input#direccion(type='text' name='direccion')
+                                                td
+                                                    input#edad(type='text' name='edad')  
+                                                td
+                                                    input#correo(type='text' name='correo')      
 
-                                            td(colspan='2' style='text-align:center')
-                                                input(type='submit',value='Insertar Nuevo').btn.btn-primary
-                                                
+                                                td(colspan='2' style='text-align:center')
+                                                    input(type='submit',value='Insertar Nuevo').btn.btn-primary
+                                                    

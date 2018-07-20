@@ -1,19 +1,21 @@
 {
   "name": "losganchos",
-  "version": "1.0.0",
+  "version": "0.5.0",
   "description": "Proyecto Final de Desarrollo IX",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon",
+    "dev": "gulp mover && nodemon",
     "pre": "gulp mover && node app.js"
   },
   "keywords": [
     "node",
     "express",
     "mongo",
-    "pug"
+    "pug",
+    "PayPal"
   ],
-  "author": "Manuel Fernandez",
+  "auhor": "team Los Ganchos",
+  "collaborators": ["Ramon Castro","Manuel Fernandez","Pedro Ramos"],
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^2.0.1",
@@ -21,8 +23,10 @@
     "connect-mongo": "^2.0.1",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.0",
+    "moment": "^2.22.2",
     "mongoose": "^5.1.4",
+    "paypal-rest-sdk": "^1.8.1",
     "pug": "^2.0.3"
   }
 }

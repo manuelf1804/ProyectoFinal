@@ -3,7 +3,7 @@ html.no-js(lang="es")
   head
     meta(charset="utf-8")
     meta(http-equiv="X-UA-Compatible" content="IE=edge")
-    - var url = '';
+    - var url = 'http://localhost:81/public';
     title #{title}
     meta(name="description" content="Sufee Admin - HTML5 Admin Template")
     meta(name="viewport" content="width=device-width, initial-scale=1")
@@ -18,8 +18,14 @@ html.no-js(lang="es")
    
     block customcss
         link(rel="stylesheet" href=url+"/css/style.css")
+    style.
+      #dropi{
+        position:absolute;
+        left:auto !important;
+        top:100% !important;
+      }
+  
   body
-    // Left Panel
     aside#left-panel.left-panel
       nav.navbar.navbar-expand-sm.navbar-default
         .navbar-header
@@ -28,24 +34,18 @@ html.no-js(lang="es")
           a.navbar-brand(href="./") Los Ganchos
         #main-menu.main-menu.collapse.navbar-collapse
           ul.nav.navbar-nav
-            each r in menuNames
-                if(r.nombre==title)
+            each menu in menuNames
+                if(menu.nombre==title)
                     li.active
-                        a(href=r.nombre)
-                            i(class='menu-icon fa fa-'+r.icon)
-                            | #{r.nombre}
+                        a(href=menu.nombre)
+                            i(class='menu-icon fa fa-'+menu.icon)
+                            | #{menu.nombre}
                 else
                     li
-                        a(href=r.nombre)
-                            i(class='menu-icon fa fa-'+r.icon)
-                            | #{r.nombre}
-        // /.navbar-collapse
-    // /#left-panel
-    // Left Panel
-    // Right Panel
+                        a(href=menu.nombre)
+                            i(class='menu-icon fa fa-'+menu.icon)
+                            | #{menu.nombre}
     #right-panel.right-panel
-      // Header
-      // Header
       .breadcrumbs
         .col-sm-4
           .page-header.float-left
@@ -57,7 +57,7 @@ html.no-js(lang="es")
               ol.breadcrumb.text-right
                 if(username=='')
                   a.nav-link(href="" data-toggle='dropdown') Login
-                  ul.dropdown-menu.dropdown-menu-right
+                  ul#dropi.dropdown-menu.dropdown-menu-right
                     li.px-4.py-2
                       form.form(role='form' action='/Login' method='POST')
                         .form-group
@@ -71,7 +71,7 @@ html.no-js(lang="es")
                             a(href='/Registrarme') Registrarme
                 else
                   a.nav-link(href="" data-toggle='dropdown') #{username}
-                  ul.dropdown-menu.dropdown-menu-right.mt-2
+                  ul#dropi.dropdown-menu.dropdown-menu-right(style='left:auto;')
                     li.px-4.py-2
                       a.dropdown-item(href='/Logout') Logout
       .content.mt-3

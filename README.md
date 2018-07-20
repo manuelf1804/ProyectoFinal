@@ -25,30 +25,28 @@ Para las pruebas locales se configuro nginx de manera que sirviera los archivos 
 git clone https://github.com/manuelf1804/ProyectoFinal.git
 
 ```
-2. Instalar las dependencias
+2. Instalar las dependencias y demas
 
 ``` 
-npm install 
+npm install
+npm install -g gulp nodemon
 
 ```
-3. mover los archivos estaticos al servidor web
+3. Mover archivos publicos e iniciar nodemon
 
 ``` 
-gulp mover
+npm run dev
 
 ```
+esto ejecutara gulp mover y despues nodemon. 
+gulp mover, mueve los archivos de la carpeta publica a /var/www/public, se recomienda configurar nginx para elevar /var/www como http://localhost:81, y que nginx mande las rutas de http://localhost:80 hacia el puerto 3022, esto configuracion se puede realizar copiando el archivo default public/ a /etc/nginx/sites-enabled.
 
-4. Iniciar app.js, con node o nodemon 
+de no querer hacer esta configuracion de nginx entonces modificar app.js para reconocer la carpeta public como una ruta estatica
 
-``` 
-nodemon
-
-```
-
-5. Conectarse al host local
+4. Conectarse al host
 
 ``` 
-http://localhost
+http://localhost o http://localhost:3022 (dependiendo del paso 3)
 
 ```
 ## Copyright
