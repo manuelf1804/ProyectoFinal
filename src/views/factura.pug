@@ -1,20 +1,63 @@
 extends _template
 
 block replace
-    h1 Factura:
-    - let price = 0;
-    each servicio in servicios
-        - let acum = 0;
-        each value in factura[servicio.nombre]
-            if(value != '0')
-                - acum += parseInt(value);
-        if(acum != 0)
-            h3 #{acum} x #{servicio.nombre}
-                span(style='font-weight:bold; margin-left:5px') #{(acum * servicio.precio).toFixed(2)}
-                - price += acum * servicio.precio;
-    h2 Subtotal : #{price.toFixed(2)}
-    h2 Itbms: #{(price * .07).toFixed(2)}
-    h1 total a pagar $#{(price*1.07).toFixed(2)}
-        
-  
-        
+    .container
+      .card
+        .card-header
+          | Invoice 
+          strong #{moment().format('DD/MM/YYYY')}
+        .card-body
+          .row.mb-4
+            .col-sm-6
+              h6.mb-3 De:
+              div
+                strong Los Ganchos
+              br 
+              | Costa del Este, edificio YEYE bla bla bla
+            .col-sm-6
+              h6.mb-3 Para:
+              div
+                strong #{usuario.nombre.first} #{usuario.nombre.last}
+              br 
+              | #{usuario.direccion}
+          .table-responsive-sm
+            table.table.table-striped
+              thead
+                tr
+                  th.center #
+                  th Item
+                  th.right Costo Unitario
+                  th.center Cantidad
+                  th.right Total
+              tbody
+                - let n = 1;
+                - let acum = 0;
+                each item in factura
+                    tr
+                        td.center #{n}
+                        td.left.strong #{item.name}
+                        td.right #{item.price.toFixed(2)}
+                        td.center #{item.quantity}
+                        td.right #{(item.total).toFixed(2)}
+                        - acum += item.total;
+                        - n++;
+          .row
+            .col-lg-4.col-sm-5
+            .col-lg-4.col-sm-5.ml-auto
+              table.table.table-clear
+                tbody
+                  tr
+                    td.left
+                        strong Subtotal
+                    td.right $#{acum.toFixed(2)}
+                  tr
+                    td.left
+                        strong ITMBS (7%)
+                    td.right $#{(acum * .07).toFixed(2)}
+                  tr
+                    td.left
+                        strong Total
+                    td.right
+                        strong $#{(acum*1.07).toFixed(2)}
+        form(action='factura/verificar' method='POST')
+            input(type="submit", value="Pagar con PayPal").btn.btn-primary 

@@ -1,3 +1,6 @@
+//use db losganchos
+db.createUser({user:'sachiel',pwd:'losganchos123',roles:[{role:'readWrite',db:'losganchos'}]});
+
 db.usuario.insertOne({
     username:'manuelf1804',
     password:'$2b$10$ZNifQiUgJg3MApvk/xSvn.tL4EK4PfT3M5nyFObABOluCypbjAXne',
@@ -6,8 +9,8 @@ db.usuario.insertOne({
     direccion:'Punta',
     edad:22,
     correo:'manfer1804@gmail.com',
-    activo:true,  
-})
+    activo:true,  });
+
 db.servicio.insertMany([
     {nombre:'Planchado',
      abri:'pln',
