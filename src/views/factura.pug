@@ -4,7 +4,7 @@ block replace
     .container
       .card
         .card-header
-          | Invoice 
+          | Fecha: 
           strong #{moment().format('DD/MM/YYYY')}
         .card-body
           .row.mb-4
@@ -13,9 +13,9 @@ block replace
               div
                 strong Los Ganchos
               br 
-              | Plaza El cangrejo, Avenida Manuel Espinoza Batista, Panama. 
+              | Avenida Manuel Espinoza Batista, Plaza El Cangrejo , Panamá. 
               br
-              | Primer piso, al lado de nación sushi
+              | Local #70, Primer piso, al lado de Nación Sushi.
             .col-sm-6
               h6.mb-3 Para:
               div
@@ -62,4 +62,4 @@ block replace
                     td.right
                         strong $#{(acum*1.07).toFixed(2)}
         form(action='factura/verificar' method='POST')
-            input(type="submit", value="Pagar con PayPal").btn.btn-primary 
+            input(type="submit", value="Pagar con PayPal").btn.btn-primary.float-right

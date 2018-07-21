@@ -63,13 +63,13 @@ router.post('/factura', function(req, res, next){
                     if(value != 0)
                         acum += parseInt(value);
                 });
+                let total = acum * servicio.precio
                 if ( acum !== 0 ){
-                    let price = acum * servicio.precio;
                     req.session.factura.push({
                         name : servicio.nombre,
                         quantity : acum,
-                        price : price,
-                        total : acum * price,
+                        price : servicio.precio,
+                        total : total
                     });
                 }
             });
