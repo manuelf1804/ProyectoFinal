@@ -94,7 +94,7 @@ router.post('/factura/verificar', function(req, res, next){
         },
         "redirect_urls": {
             "return_url": "http://localhost:3022/factura/success",
-            "cancel_url": "http://localhost:3022/factura/fail"
+            "cancel_url": "http://localhost:3022/factura/cancel"
         },
         "transactions": [{
             "amount": {
@@ -118,6 +118,9 @@ router.post('/factura/verificar', function(req, res, next){
 });
 router.get("/factura/success", function (req, res, next) {
     res.send('exito');
+});
+router.get("/factura/cancel", function (req,res, next) {
+    res.send('Si esta aqui es porque ha decidido a decidido no seguir con la transaccion. :(  <br> esperamos que vuelva pronto');
 });
 router.get("/Nosotros", function (req, res, next) {
     if(req.session.user){
