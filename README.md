@@ -8,7 +8,7 @@ Por: Ramon Castro
      Pedro Ramos 
 
 
-## Copiar este repositorio  ##
+## Copiar este repositorio y Hacer cambios  ##
 
 Para hacer pruebas de manera local de este repostorio: 
 * un servidor web que maneje los archivos estaticos: imagenes,css,javascript, por ejemplo: Apache , Nginx, etc.
@@ -38,10 +38,10 @@ npm install -g gulp nodemon
 npm run dev
 
 ```
-esto ejecutara gulp mover y despues nodemon. 
+Esto ejecutara gulp mover y despues nodemon. 
 gulp mover, mueve los archivos de la carpeta publica a /var/www/public, se recomienda configurar nginx para elevar /var/www como http://localhost:81, y que nginx mande las rutas de http://localhost:80 hacia el puerto 3022, esto configuracion se puede realizar copiando el archivo default public/ a /etc/nginx/sites-enabled.
 
-de no querer hacer esta configuracion de nginx entonces modificar app.js para reconocer la carpeta public como una ruta estatica
+De no querer hacer esta configuracion de nginx entonces modificar app.js para reconocer la carpeta public como una ruta estatica
 
 4. Conectarse al host
 
@@ -49,7 +49,7 @@ de no querer hacer esta configuracion de nginx entonces modificar app.js para re
 http://localhost o http://localhost:3022 (dependiendo del paso 3)
 
 ```
-## Copyright
+## Copyright of Templates
 * [Start Bootstrap - One Page Wonder](https://startbootstrap.com/template-overviews/one-page-wonder/)
 Copyright 2013-2018 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-one-page-wonder/blob/gh-pages/LICENSE) license.
 * [sufee-admin-dashboard](https://colorlib.com/polygon/sufee/)

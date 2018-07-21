@@ -17,7 +17,7 @@ app.set('view engine', 'pug');
 let user = 'sachiel';
 let pass = 'losganchos123';
 let bd = 'losganchos';
-let server = '192.168.1.109:27017'; //cambiar por localhost
+let server = 'localhost:27017';
 mongoose.connect('mongodb://'+user+':'+pass+'@'+server+'/'+bd+'?authDatabase='+bd);
 let db = mongoose.connection;
 db.on('error',console.error.bind(console,'Error de Conexion: '));
