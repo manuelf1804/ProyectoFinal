@@ -34,14 +34,17 @@ block replace
               tbody
                 - let n = 1;
                 - let acum = 0;
+                - let tax = 0;
                 each item in factura
+                  - let total = parseFloat(item.price) * parseInt(item.quantity);
                     tr
                         td.center #{n}
                         td.left.strong #{item.name}
-                        td.right #{item.price.toFixed(2)}
+                        td.right #{item.price}
                         td.center #{item.quantity}
-                        td.right #{(item.total).toFixed(2)}
-                        - acum += item.total;
+                        td.right #{total}
+                        - acum += parseFloat(total);
+                        - tax += parseFloat(item.tax * item.quantity);
                         - n++;
           .row
             .col-lg-4.col-sm-5
@@ -55,11 +58,11 @@ block replace
                   tr
                     td.left
                         strong ITMBS (7%)
-                    td.right $#{(acum * .07).toFixed(2)}
+                    td.right $#{tax.toFixed(2)}
                   tr
                     td.left
                         strong Total
                     td.right
-                        strong $#{(acum*1.07).toFixed(2)}
+                        strong $#{(acum + tax).toFixed(2)}
         form(action='factura/verificar' method='POST')
             input(type="submit", value="Pagar con PayPal").btn.btn-primary.float-right

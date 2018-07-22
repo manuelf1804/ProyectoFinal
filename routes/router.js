@@ -63,13 +63,14 @@ router.post('/factura', function(req, res, next){
                     if(value != 0)
                         acum += parseInt(value);
                 });
-                let total = acum * servicio.precio
+                let tax = ((servicio.precio * 0.07)/1.07);
                 if ( acum !== 0 ){
                     req.session.factura.push({
                         name : servicio.nombre,
-                        quantity : acum,
-                        price : servicio.precio,
-                        total : total
+                        quantity : acum.toString(),
+                        price : (servicio.precio).toFixed(2),
+                        tax : tax.toFixed(2),
+                        currency : 'USD'
                     });
                 }
             });
@@ -83,10 +84,15 @@ router.post('/factura', function(req, res, next){
   });
 
 router.post('/factura/verificar', function(req, res, next){
-    let total = 0;
+    let subt = 0;
+    let tax = 0;
     req.session.factura.forEach(item => {
-        total += item.total;
+        tax += parseInt(item.quantity) * parseFloat(item.tax);
+        subt += parseInt(item.quantity) * parseFloat(item.price);
     });
+    let total = (tax + subt).toFixed(2);
+    tax = tax.toFixed(2);
+
     var create_payment_json = {
         "intent": "sale",
         "payer": {
@@ -98,12 +104,18 @@ router.post('/factura/verificar', function(req, res, next){
         },
         "transactions": [{
             "amount": {
+                "total": total,
                 "currency": "USD",
-                "total": total.toFixed(2)
+                "details": {
+                    "subtotal": subt,
+                    "tax": tax
+                  }
             },
+            "item_list": {
+                "items": req.session.factura},
             "description": "Total a pagar para los ganchos"
-        }]
-    };
+        }]};
+
     paypal.payment.create(create_payment_json, function (error, payment) {
         if (error) {
             next(error);

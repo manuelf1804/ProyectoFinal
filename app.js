@@ -28,8 +28,8 @@ db.once('open',() => {
 //Set PayPal 
 paypal.configure({
 	'mode': 'sandbox', //sandbox or live
-	'client_id': 'AYBPcdFAPiFiDu_a_Ks6CuZY925mXNIAHSHuYi6LwK0DxsW9YJMn_hnlCMN4cdtE2HabucUTy2xijSax',
-	'client_secret': 'EEKqDHFlz8i9tHoySNg72IZgVGgOrOeptmlrw1r0wB_x6-uYap_5PVORU06rZOW5KX7P-v0KaMDgqaiU'
+	'client_id': 'AWxcAxq0B-oLEBLdbEHN6rEvLR86zeBT34QqMCGSwqzxFmlkC1RTlkH9WP4gEx5g5z3cJfS8-FoX6OVT',
+	'client_secret': 'EA0PPjqNof6nxoTw6PPttsMccf_HtGMadm9gYosY9LrXdrDoo_uFmdfllzzF9QDHNxevaa1FfwHCJu-T'
   });
 
 // Middleware

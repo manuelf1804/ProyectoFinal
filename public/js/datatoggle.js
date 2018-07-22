@@ -4,7 +4,7 @@ $(document).ready(function(){
         $('.valor').each(function(){
             let precio = ($(this).find('.precio').val());
             let qty = parseInt($(this).find('.qty').val());
-            arr += (precio*qty)*1.07;
+            arr += (precio*qty);
         })
         if(!isNaN(arr))
             $('#total').text(arr.toFixed(2));
