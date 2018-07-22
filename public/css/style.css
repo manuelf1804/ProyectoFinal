@@ -15,4 +15,15 @@ td{
     bottom: 0;
     height: 100px;
 }
+#imagen{
+    height: 200px;
+    width: 200px;
+}
+#imagenMV{
+    padding: 10px;
+    margin: 10px;
+    float: right; 
+    width: 250px;
+}
+
   
