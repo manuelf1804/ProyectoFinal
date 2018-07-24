@@ -74,6 +74,11 @@ router.post('/factura', function(req, res, next){
                         currency : 'USD'
                     });
                 }
+                else{
+                    let err = new Error('Sin Productos en factura');
+                    err.status = 500;
+                    next(err);
+                }
             });
             res.render('factura',{title:'Factura',menuNames:menuForDisplay,username:username,usuario:req.session.user,factura:req.session.factura ,servicios:servicios});
        

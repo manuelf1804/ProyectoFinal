@@ -42,7 +42,9 @@ block replace
                     label.col-sm-3.col-form-label(for='email') Correo Electronico:
                     .col-md-8
                         input.form-control.border.border-dark#email(type="email", name="correo" required)
-                button#btn.btn.btn-dark.float-right Registrarme
+                .row
+                    .col-md-11
+                        button#btn.btn.btn-dark.float-right Registrarme
     customjs
         script.
             let error = "#{error}"

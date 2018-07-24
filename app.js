@@ -41,11 +41,12 @@ app.use(session({
 		return uuid();
 	},
 	secret: 'work hard',
-	resave: true,
+	resave: false,
 	saveUninitialized: false,
 	store: new MongoStore({
 		mongooseConnection: db
-	})
+	}),
+	cookie: {maxAge: 60 * 60 * 1000}
   }));
  
 let routes = require('./routes/router');
