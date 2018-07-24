@@ -25,5 +25,34 @@ td{
     float: right; 
     width: 250px;
 }
+#imagenmision{
+        
+float: right;
+        
+margin: 0px 15px 15px 0px;
+        
+width: 100px;
+    }
+    
+
+#imagenvision{
+        
+float: right;
+        
+margin: 5px -20px 100px 0px;
+        
+width: 150px;
+    }
+    
+
+#imagenmapa{
+        
+text-align: center;
+        
+height: 100px;
+        
+width: 100px;
+    }
+ 
 
   
