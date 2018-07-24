@@ -39,33 +39,33 @@ npm install
 npm install -g gulp nodemon
 ```
 
-4. 
-Opcion 1 (recomendado): 
+4. Configurar el servidor estatico
+    Opcion 1 (recomendado): 
 
-Mover el archivo default en config/ a /etc/nginx/sites-enabled
-esto permitira a nginx servir las carpetas y archivos de /var/www/html/ como localhost:81
+    Mover el archivo default en config/ a /etc/nginx/sites-enabled
+    esto permitira a nginx servir las carpetas y archivos de /var/www/html/ como localhost:81
 
-Opcion 2: 
+    Opcion 2: 
 
-Configurar apache para servir el directorio public (copiado a otra ruta del disco duro) como localhost:81
+    Configurar apache para servir el directorio public (copiado a otra ruta del disco duro) como localhost:81
 
-Opcion 3: 
+    Opcion 3: 
 
-Modificar app.js para servir la carpeta public del respositorio como una ruta estatica, modificar tambien los url de _template.pug y index.pug para reconocer esta nueva direccion estatica 
+    Modificar app.js para servir la carpeta public del respositorio como una ruta estatica, modificar tambien los url de _template.pug y index.pug para reconocer esta nueva direccion estatica 
 
 5. Mover archivos publicos e iniciar nodemon
-(si se usaron las opcion 1 del paso anterior o la carpeta que localhost:81 reconce es /var/www/html, de igual forma de puede configurar gulpfile.js con la ruta que se localhost:81 reconoce eso es para la opcion 2).
+    (si se usaron las opcion 1 del paso anterior o la carpeta que localhost:81 reconce es /var/www/html, de igual forma de puede configurar gulpfile.js con la ruta que se localhost:81 reconoce eso es para la opcion 2).
 
-``` 
-$ npm run dev
-```
+    ``` 
+    $ npm run dev
+    ```
 
-En el caso de haber elegido la opcion 3: ejectuar directamente, desde la carpeta del respositio : 
-``` 
-$ nodemon 
-```
+    En el caso de haber elegido la opcion 3: ejectuar directamente, desde la carpeta del respositio : 
+    ``` 
+    $ nodemon 
+    ```
 
-4. Conectarse al host
+6. Conectarse al host
 ``` 
 http://localhost o http://localhost:3022 (dependiendo del paso 4)
 
