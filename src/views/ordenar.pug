@@ -13,6 +13,13 @@ append customcss
 block replace
     .container
         .row
+            .col-sm-12
+                .alert.alert-warning.alert-dismissible.fade.show(role='alert')
+                    span.badge.badge-pill.badge-success Nota:
+                    |  La fecha de entrega es de 3-5 despues de realizar el pedido.
+                    button.close(type='button', data-dismiss='alert', aria-label='Close')
+                        span(aria-hidden='true') ×
+        .row
             .col-xl-6
                 .card
                     .card-body
@@ -69,7 +76,7 @@ block replace
                                 if(!username)
                                     span(style='color:red') Porfavor logear antes de realizar la orden
                                 else
-                                    input.btn.btn-primary(type='submit' value='listo')                   
+                                    input#listo.btn.btn-secondary(type='submit' value='listo')                   
 
 append customjs
-    script(src=url+'/js/datatoggle.js')  
+    script(src=url+'/js/datatoggle.js')

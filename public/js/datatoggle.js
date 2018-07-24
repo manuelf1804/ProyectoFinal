@@ -10,6 +10,11 @@ $(document).ready(function(){
             $('#total').text(arr.toFixed(2));
         else
             $('#total').text('0.00');
+        if(arr === 0.00 ) {
+            $('#listo').prop("disabled",true);
+        }
+        else
+        $('#listo').prop("disabled",false);     
     }
     calcular();
     $('#orden').change(function(){
