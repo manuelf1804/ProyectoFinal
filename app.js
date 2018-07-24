@@ -6,6 +6,7 @@ let bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 let MongoStore = require('connect-mongo')(session);
 let paypal = require('paypal-rest-sdk');
+var uuid = require('uuid/v4');
 app.locals.moment = require('moment');
 
 //Set Pug
@@ -18,7 +19,7 @@ let user = 'sachiel';
 let pass = 'losganchos123';
 let bd = 'losganchos';
 let server = 'localhost:27017';
-mongoose.connect('mongodb://'+user+':'+pass+'@'+server+'/'+bd+'?authDatabase='+bd);
+mongoose.connect('mongodb://'+user+':'+pass+'@'+server+'/'+bd+'?authDatabase='+bd, {useNewUrlParser:true});
 let db = mongoose.connection;
 db.on('error',console.error.bind(console,'Error de Conexion: '));
 db.once('open',() => {
@@ -36,6 +37,9 @@ paypal.configure({
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({
+	genid: function(){
+		return uuid();
+	},
 	secret: 'work hard',
 	resave: true,
 	saveUninitialized: false,
