@@ -51,10 +51,11 @@ app.use('/',routesModificar);
 app.use(function(req,res){
 	res.render('PageNotFound');//Error 404
 });
-/* app.use(function(err,req,res,next){
+
+app.use(function(err,req,res,next){
 	res.render('error',{error:err})//resto de los errores
 })
- */
+
 // Set Routes
 const port = process.env.NODEPORT || 3022 ;
 

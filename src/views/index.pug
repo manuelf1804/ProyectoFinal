@@ -29,25 +29,7 @@ html(lang="es")
           ul.navbar-nav.ml-auto
               each menu in menuNames
                 a.nav-link(href=menu.nombre) #{menu.nombre}
-              if(username=='')
-                a.nav-link(href="" data-toggle='dropdown') Login
-                ul.dropdown-menu.dropdown-menu-right.mt-2
-                  li.px-4.py-2
-                    form.form(role='form' action='/Login' method='POST')
-                      .form-group
-                        input#user.form-control.form-control-sm(name='user' placeholder='Usuario', type='text', required)
-                      .form-group
-                        input#pass.form-control.form-control-sm(name='pass' placeholder='Contraseña', type='password', required)
-                      .form-group
-                        button.btn.btn-primary.btn-block(type='submit') Login
-                      .form-group.text-center
-                        small
-                          a(href='#') Registrarme?
-              else
-                a.nav-link(href="" data-toggle='dropdown') #{username}
-                ul.dropdown-menu.dropdown-menu-right.mt-2
-                  li.px-4.py-2
-                    a.dropdown-item(href='/Logout') Logout
+              include _login
     header.masthead.text-center.text-white
       .masthead-content
         .container

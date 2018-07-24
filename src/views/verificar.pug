@@ -1,16 +1,33 @@
-extends _template.pug
+extends _template
 
 block replace
-    p Por favor ingrese los siguientes datos para poder ver el estado de la orden
+
+    p Por favor ingrese su nombre de usuario para obtener los datos de sus ordenes
+   
     .midivsito
         .row
             .col-md-11.offset-md-1
                 .form-group.row
-                    label.col-sm-3.col-form-label(for='ido') Codigo de Orden:
+                    label.col-sm-3.col-form-label(for='username') Username:
                     .col-md-8
-                        input.form-control.border.border-dark#ido(type="text", name="ido")
-                .form-group.row
-                    label.col-sm-3.col-form-label(for='str') Cedula:
-                    .col-md-8
-                        input.form-control.border.border-dark#str(type="text", name="str")
-                button#btn.btn.btn-dark.float-right Buscar
+                        input.form-control.border.border-dark#username(type="text", name="username")
+                button#buscar.btn.btn-dark.float-right(type='button') Buscar
+    .row#results
+append customjs
+    script.
+         $( document ).ready(function() {
+                $('#buscar').click(function() {
+                let username = $('#username').val();
+                $.ajax({
+                        url: '/Verificar/get', //direccion a hacer el POST 
+                        type: "POST", 
+                        data: ({username: username}), //data que quieres mandar 
+                        success: function(res){ // si todo sale bien que quieres hacer
+                            $('#results').html(res);
+                        },
+                        error: function(res){ // si hubo un error 
+                            alert('no hay registros');
+                        }
+                    });        
+                });
+        });

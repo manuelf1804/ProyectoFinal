@@ -1,0 +1,62 @@
+each factura in facturas    
+    .container
+      .card
+        .card-header
+          | Fecha de Pedido: 
+          strong #{moment(factura.fechaOrden).format('DD/MM/YYYY')}
+          span.float-right 
+            | Fecha de Entrega: 
+            strong #{moment(factura.fechaRetorno).format('DD/MM/YYYY')}
+        .card-body
+          .row.mb-4
+            .col-sm-6
+              h6.mb-3 Para:
+              div
+                strong #{factura.nombre.first} #{factura.nombre.last}
+              br 
+              | #{factura.direccion}
+          .table-responsive-sm
+            table.table.table-striped
+              thead
+                tr
+                  th.center #
+                  th Item
+                  th.right Costo Unitario
+                  th.center Cantidad
+                  th.right Total
+              tbody
+                - let n = 1;
+                - let acum = 0;
+                - let tax = 0;
+                each item in factura.detalle
+                  - console.log(item);
+                  - let total = item.precio * item.qty;
+                    tr
+                        td.center #{n}
+                        td.left.strong #{item.name}
+                        td.right #{(item.precio).toFixed(2)}
+                        td.center #{(item.qty).toString()}
+                        td.right #{total.toFixed(2)}
+                        - acum += total;
+                        - tax += item.tax * item.qty;
+                        - n++;
+          .row
+            .col-lg-4.col-sm-5
+            .col-lg-4.col-sm-5.ml-auto
+              table.table.table-clear
+                tbody
+                  tr
+                    td.left
+                        strong Subtotal
+                    td.right $#{acum.toFixed(2)}
+                  tr
+                    td.left
+                        strong ITMBS (7%)
+                    td.right $#{tax.toFixed(2)}
+                  tr
+                    td.left
+                        strong Total
+                    td.right
+                        strong $#{(acum + tax).toFixed(2)}
+          .row
+            h4 Estatus: #{factura.estado}

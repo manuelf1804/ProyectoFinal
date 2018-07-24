@@ -1,0 +1,14 @@
+extends _template
+block replace
+    .col-sm-12
+        .alert.alert-success.alert-dismissible.fade.show(role='alert')
+            span.badge.badge-pill.badge-success Success
+            |  Su compra ha sido exitosa
+            button.close(type='button', data-dismiss='alert', aria-label='Close')
+                span(aria-hidden='true') ×
+    span Su id de Orden es #{orden._id} 
+    br
+    span La fecha de entrega de #{moment(orden.fechaRetorno).format('DD-MM-YYYY')}
+    br
+    span Puede ver mas detalles en la seccion de 
+        a(href='/Verificar') verificar.

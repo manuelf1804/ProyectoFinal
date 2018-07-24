@@ -6,7 +6,6 @@ let Orden = require('../models/orden');
 let paypal = require('paypal-rest-sdk');
 var username = '';
 
-
 //prev
 let menu = require('../src/js/menus').menus;
 let menuAdmin = require('../src/js/menus').menusAdmin;
@@ -46,6 +45,8 @@ router.post("/Login", function (req, res, next) {
             req.session.user=user;
             if(req.session.user.rol === 'admin')
                 req.session.menu = menuAdmin;
+            else
+                req.session.menu = menu;
             res.redirect('back');
         }
     });
@@ -74,12 +75,8 @@ router.post('/factura', function(req, res, next){
                     });
                 }
             });
-            Usuario.getFactDataByUser(username,function(err,user) {
-                if(err || !user)
-                    next(err);
-                else
-                    res.render('factura',{title:'Factura',menuNames:menuForDisplay,username:username,usuario:user,factura:req.session.factura ,servicios:servicios});
-            })
+            res.render('factura',{title:'Factura',menuNames:menuForDisplay,username:username,usuario:req.session.user,factura:req.session.factura ,servicios:servicios});
+       
         }});
   });
 
@@ -99,7 +96,7 @@ router.post('/factura/verificar', function(req, res, next){
             "payment_method": "paypal"
         },
         "redirect_urls": {
-            "return_url": "http://localhost:3022/factura/success",
+            "return_url": "http://localhost:3022/return",
             "cancel_url": "http://localhost:3022/factura/cancel"
         },
         "transactions": [{
@@ -128,27 +125,93 @@ router.post('/factura/verificar', function(req, res, next){
         }
     });
 });
-router.get("/factura/success", function (req, res, next) {
-    res.send('exito');
+router.get("/return", function (req, res, next) {
+    const paymentId = req.query.paymentId;
+    const payerId = { payer_id : req.query.PayerID};
+
+    paypal.payment.execute(paymentId, payerId, function(error,payment){
+        if(error)
+            next(error);
+        else{
+            if(payment.state == 'approved'){
+                Orden.insertarFactura(req.session.user,req.session.factura,function(error,orden){
+                    if(error)
+                        next(error);
+                    else{
+                        res.render('success',{title:'Exito',orden:orden,menuNames:menuForDisplay,username:username});
+                    }
+                })
+            }
+                
+            else
+                res.send('hubo un error');
+        }
+    });
 });
+
 router.get("/factura/cancel", function (req,res, next) {
     res.send('Si esta aqui es porque ha decidido a decidido no seguir con la transaccion. :(  <br> esperamos que vuelva pronto');
 });
+
 router.get("/Nosotros", function (req, res, next) {
     if(req.session.user){
         menuForDisplay = req.session.menu;
         username = req.session.user.username;}
     res.render('nosotros',{title:'Nosotros',menuNames:menuForDisplay,username:username});
 });
-router.get("/Registrar", function (req, res, next) {
+
+router.get("/Registrarme", function (req, res, next) {
     res.render('registrar',{title:'Registrar',menuNames:menuForDisplay,username:username});
 });
+
+router.post("/Registrarme", function (req, res, next) {
+    if(req.body.password != req.body.passconfirm)
+        res.render('registrar',{title:'Registrar',menuNames:menuForDisplay,username:username,error:'Contraseñas no son iguales'});
+    Usuario.insert(req.body.username, req.body.password, req.body.nombre, req.body.apellido, 'cliente', req.body.direccion, req.body.edad, req.body.correo, function(err, user) {
+        if(err)
+            next(err);
+        else if(user){
+            let error = new Error("usuario ya existe ");
+            res.render('registrar',{title:'Registrar',menuNames:menuForDisplay,username:username,error:error});
+            next(error);
+        }
+        else{
+            Usuario.login(req.body.username, req.body.password, function(err,user){
+                if(err)
+                    next(err);
+                else{
+                    req.session.user=user;
+                    if(req.session.user.rol === 'admin')
+                        req.session.menu = menuAdmin;
+                    else
+                        req.session.menu = menu;
+                    res.redirect('/');
+            }});
+        }
+    })
+});
+
 router.get("/Verificar", function (req, res, next) {
     if(req.session.user){
         menuForDisplay = req.session.menu;
         username = req.session.user.username;}
     res.render('verificar',{title:'Verificar',menuNames:menuForDisplay,username:username});
 });
+
+router.post("/Verificar/get", function(req, res, next){
+    Orden.findFactsByUsername(req.body.username, function(err, facturas){
+        if(err)
+            next(err);
+        else if(!facturas){
+            let error = new Error('No se encontraron facturas bajo dicho usuario. Intente denuevo');
+            error.status = 401;
+            next(error);
+        }
+        else{
+            res.render('_factable',{facturas:facturas});}
+    })
+})
+
 router.get("/logout", function (req, res, next) {
    if(req.session){
         req.session.destroy();
