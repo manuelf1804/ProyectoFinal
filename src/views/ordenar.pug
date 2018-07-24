@@ -16,7 +16,7 @@ block replace
             .col-sm-12
                 .alert.alert-warning.alert-dismissible.fade.show(role='alert')
                     span.badge.badge-pill.badge-success Nota:
-                    |  La fecha de entrega es de 3-5 despues de realizar el pedido.
+                    |  La fecha de entrega es de 3 a 5 dias despues de realizar el pedido.
                     button.close(type='button', data-dismiss='alert', aria-label='Close')
                         span(aria-hidden='true') ×
         .row
@@ -76,12 +76,7 @@ block replace
                                 if(!username)
                                     span(style='color:red') Porfavor logear antes de realizar la orden
                                 else
-<<<<<<< HEAD
-                                    input.btn.btn-primary(type='submit' value='listo') 
-                                               
-=======
                                     input#listo.btn.btn-secondary(type='submit' value='listo')                   
->>>>>>> 818dc0cb6ec26e15778bb59cec0f28017669bddb
 
 append customjs
     script(src=url+'/js/datatoggle.js')
