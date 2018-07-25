@@ -61,8 +61,14 @@ router.post('/factura', function(req, res, next){
             servicios.forEach(servicio => {
                 let acum = 0;
                 req.body[servicio.nombre].forEach(value => {
-                    if(value != 0)
+                    if(value != 0){
                         acum += parseInt(value);
+                        if(isNaN(acum)){
+                            let err = new Error('error fatal');
+                            err.status = 400;
+                            next(err);
+                        }
+                    }
                 });
                 let tax = ((servicio.precio * 0.07)/1.07);
                 if ( acum !== 0 ){
@@ -74,14 +80,8 @@ router.post('/factura', function(req, res, next){
                         currency : 'USD'
                     });
                 }
-                else{
-                    let err = new Error('Sin Productos en factura');
-                    err.status = 500;
-                    next(err);
-                }
             });
             res.render('factura',{title:'Factura',menuNames:menuForDisplay,username:username,usuario:req.session.user,factura:req.session.factura ,servicios:servicios});
-       
         }});
   });
 

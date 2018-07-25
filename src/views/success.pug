@@ -1,14 +1,62 @@
 extends _template
 block replace
-    .col-sm-12
+    .col-md-12
         .alert.alert-success.alert-dismissible.fade.show(role='alert')
-            span.badge.badge-pill.badge-success Success
+            span.badge.badge-pill.badge-success Exito!
             |  Su compra ha sido exitosa
             button.close(type='button', data-dismiss='alert', aria-label='Close')
                 span(aria-hidden='true') ×
-    span Su id de Orden es #{orden._id} 
-    br
-    span La fecha de entrega de #{moment(orden.fechaRetorno).format('DD-MM-YYYY')}
-    br
-    span Puede ver mas detalles en la seccion de 
-        a(href='/Verificar') verificar.
+    .col-md-8
+      .card
+            .card-body
+                .stat-widget-four
+                    .stat-icon.dib
+                    .stat-content
+                        .text-left.dib
+                            .stat-heading 
+                                strong Resultados
+                            .stat-text
+                                span Su id de Orden es 
+                                    strong #{orden._id} 
+                                br
+                                span La fecha de entrega de 
+                                    strong #{moment(orden.fechaRetorno).format('DD-MM-YYYY')}
+                                br
+                                span Puede ver mas detalles en la seccion de 
+                                a(href='/Verificar') verificar.
+    .col-md-4
+        .card
+            .card-header
+                small
+                    span.badge.badge-primary.float-left.mt-1 ad
+                strong.card-title(style='margin-left:5px')
+                | PanamaTrips
+                
+            .card-body
+                p.card-text
+                | Estrena tu gran ropa con un viaje de 
+                a(href='https://github.com/ferquinterox/Proyecto-Final-PanamaTrips') PanamaTrips.
+    .col-md-4.offset-md-8
+        .card
+            .card-header
+                small
+                    span.badge.badge-primary.float-left.mt-1 ad
+                strong.card-title(style='margin-left:5px')
+                | PanamaJerseys
+                
+            .card-body
+                p.card-text
+                | Compra nueva ropa de deporte en 
+                a(href='https://github.com/eddyrec/1LS141-PanamaJerseys') PanamaJerseys.
+    .col-md-4.offset-md-8
+        .card
+            .card-header
+                small
+                    span.badge.badge-primary.float-left.mt-1 ad
+                strong.card-title(style='margin-left:5px')
+                | InDev Panamá
+                
+            .card-body
+                p.card-text
+                | Encuentra este y mas codigos en 
+                a(href='https://github.com/iquinzada-altkemist/utp_proyecto_store') InDev Panamá.
