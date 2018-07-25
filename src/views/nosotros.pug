@@ -1,38 +1,70 @@
+doctype html
+html
+  title Nosotros
+  meta(charset='UTF-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+  link(rel='stylesheet', href='https://www.w3schools.com/w3css/4/w3.css')
+  style.
+    body {font-family: "Times New Roman", Georgia, Serif;}
+  body
+    // Header
+    header#home.w3-display-container.w3-content.w3-wide(style='max-width:500px;min-width:500px')
+      img.w3-image(src='http://localhost:81/public/img/losganchos.png', alt='los ganchos', width='500px', height='800')
+      .w3-display-bottomleft.w3-padding-large.w3-opacity
+        h1.w3-xxlarge Los Ganchos
+    // Page content
+    .w3-content(style='max-width:1100px')
+      // Descripcion y antecedentes
+      #about.w3-row.w3-padding-64
+        .w3-col.m6.w3-padding-large.w3-hide-small
+          img.w3-round.w3-image.w3-opacity-min(src='http://localhost:81/public/img/losganchos.png', alt='Los Ganchos', width='600', height='750')
+        .w3-col.m6.w3-padding-large
+          h1.w3-center Descripción y Antecedentes 
+          br
+          h5.w3-center "Cuidando tu ropa desde el 2010"
+          h4 Descripción
+          p.w3-text-grey
+            | Este negocio electrónico surge se una idea para poder tener un servicio a domicilio de lavado y planchado a domicilio para ayudar a las personas que no tienen tiempo de poder ir a hacer estos recorridos o que están demasiado ocupadas en su día a día.
+          br
+          p.w3-text-grey
+            | Somos una lavandería con un sistema de entregas a domicilio en la cual nuestros usuarios no tendrán que salir de sus casas para enviar sus ropas a nuestra lavandería. Nosotros nos encargaremos de recoger, realizar servicios de lavandería y entregar su ropa en la puerta de su casa.
+          br
+          h4 Antecedentes
+          p.w3-text-grey
+            | Somos una empresa que ofrece a nuestros clientes una variedad de servicios con respecto al planchado y levado de su ropa con implementación de servicio a domicilio para la facilidad de los clientes con la facilidad de pago digital.
+          br
+      hr
+      // Mision y Vision
+      #menu.w3-row.w3-padding-64
+        .w3-col.l6.w3-padding-large
+          h1.w3-center Misión y Visión
+          br
+          h4 Mision
+          p.w3-text-grey
+            | Somos una lavandería a domicilio que facilita la vida de nuestros clientes, proporcionándoles soluciones efectivas y oportunas a la hora de atender sus prendas de usos diario, ofreciendo nuestros servicios, con calidad y eficiencia.
+          br
+          h4 Vision
+          p.w3-text-grey
+            | Liderar el mercado respondiendo efectivamente por la calidad de nuestros servicios, asociados al compromiso con nuestros clientes, destacando por un servicio eficiente , moderno y puntual.
+          br
+        .w3-col.l6.w3-padding-large
+          img.w3-round.w3-image.w3-opacity-min(src='http://localhost:81/public/img/MisionVision1.png', alt='Mision vision', style='width:100%')
+      hr
+      // Ubicacion
+      #about.w3-row.w3-padding-64
+        .w3-col.m6.w3-padding-large.w3-hide-small
+          iframe(src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12878.122778491783!2d-79.53446722301214!3d8.98337917210324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8faca8f17f9b2d35%3A0xf685a45ee062dabf!2sPlaza+El+Cangrejo!5e0!3m2!1ses!2spa!4v1532472010258', width='400', height='300', frameborder='0', style='border:0', allowfullscreen='')
+        .w3-col.m6.w3-padding-large
+          h1.w3-center Ubicación
+          br
+          p.w3-large
+            | Plaza El cangrejo, Avenida Manuel Espinoza Batista, Panama. Primer piso al lado de nación sushi
+      // End page content
+    // Footer
+    footer.w3-center.w3-light-grey.w3-padding-32
+      p
+        | Esta pagina web y negocio electronico de servicio de tintoria a domicilio fue desarrollado por los estudiantes Ramon Castro, Manuel Fernandez y Pedro Ramos de la carrera desarrollo de software de la facultad de Sistema y computacion de la universidad tecnologica de panama del campo Victor levi Sasso con la guia del profesot erick agrazal todos los derechos reservados. 
+        a.w3-hover-text-green(href='https://www.w3schools.com/w3css/default.asp', title='W3.CSS', target='_blank')
 
-extends _template
 
-block replace
-    h1 Ancedentes
-    br
-    h2 Somos una empresa que ofrece a nuestros clientes una variedad de servicios con respecto al planchado y levado de su ropa con implementación de servicio a domicilio para la facilidad de los clientes con la facilidad de pago digital 
-    br
-    h1 Descripcion 
-    br
-    h2 Este negocio electrónico surge se una idea para poder tener un servicio a domicilio de lavado y planchado a domicilio para ayudar a las personas que no tienen tiempo de poder ir a hacer estos recorridos o que están demasiado ocupadas en su día a día.
-    br 
-    h2 Somos una lavandería con un sistema de entregas a domicilio en la cual nuestros usuarios no tendrán que salir de sus casas para enviar sus ropas a nuestra lavandería. Nosotros nos encargaremos de recoger, realizar servicios de lavandería y entregar su ropa en la puerta de su casa
-    br
-    h1 Mision
-    br
-    h2 Somos una lavandería a domicilio que facilita la vida de nuestros clientes, proporcionándoles soluciones efectivas y oportunas a la hora de atender sus prendas de usos diario, ofreciendo nuestros servicios, con calidad y eficiencia.
-    #imagenmision
-    img(src="http://localhost:81/public/img/mision.png" alt="")
-    br
-    br
-    h1 Vision
-    br
-    h2 Liderar el mercado respondiendo efectivamente por la calidad de nuestros servicios, asociados al compromiso con nuestros clientes, destacando por un servicio eficiente , moderno y puntual
-    #imagenvision
-    img(src="http://localhost:81/public/img/vision2.jpg" alt="")
-    br
-    br
-    h1 ubicacion
-    br
-    h2 Plaza El cangrejo, Avenida Manuel Espinoza Batista, Panama. Primer piso al lado de nación sushi
-    #imagenmapa
-    img(src="http://localhost:81/public/img/mapa.png" alt="")
-    br
-    br 
-    h6  esta pagina web y negocio electronico de servicio de tintoria a domicilio  fue desarrollado por los estudiantes Ramon Castro, Manuel Fernandez y Pedro Ramos  de la carrera desarrollo de software de la facultad de Sistema y computacion  de la universidad tecnologica de panama del campo Victor levi Sasso con la guia del profesot erick agrazal todos los derechos reservados.
-    
 
