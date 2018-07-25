@@ -68,7 +68,7 @@ let usuarioSchema = new Schema({
             }
             else{
                     usuario.username = username || usuario.username;
-                    usuario.password = password || usuario.password;
+                    usuario.password = bcrypt.hash(password,10) || usuario.password;
                     usuario.nombre.first = nombre || usuario.nombre.first;
                     usuario.nombre.last = apellido || usuario.nombre.last;
                     usuario.rol = rol || usuario.rol;
