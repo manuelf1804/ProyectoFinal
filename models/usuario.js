@@ -59,7 +59,7 @@ let usuarioSchema = new Schema({
             callback(null,user);
         })
     }
-    usuarioSchema.statics.update = function(id,username,nombre,apellido,rol,direccion,edad,correo, callback){
+    usuarioSchema.statics.update = function(id,username,password,nombre,apellido,rol,direccion,edad,correo, callback){
         Usuario.findOne({_id:id},function(err,usuario){
             if(err)
                 return callback(err);
@@ -68,6 +68,7 @@ let usuarioSchema = new Schema({
             }
             else{
                     usuario.username = username || usuario.username;
+                    usuario.password = password || usuario.password;
                     usuario.nombre.first = nombre || usuario.nombre.first;
                     usuario.nombre.last = apellido || usuario.nombre.last;
                     usuario.rol = rol || usuario.rol;

@@ -70,7 +70,7 @@ router.post('/Modificar/Actualizar', function(req, res, next){
 //POST DE ACTUALIZAR usuario
 router.post('/Modificar/Actualizar/usuario', function(req, res, next){
     if(req.session.user){
-        Usuario.update(req.body.id,req.body.username,req.body.nombre,req.body.apellido,req.body.rol,req.body.direccion,req.body.edad,req.body.correo, function(error,msg){
+        Usuario.update(req.body.id,req.body.username,req,body.password,req.body.nombre,req.body.apellido,req.body.rol,req.body.direccion,req.body.edad,req.body.correo, function(error,msg){
             if(error)
                 next(error);
             else if(!msg){
