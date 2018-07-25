@@ -9,8 +9,32 @@ html
   style.
     body {font-family: "Times New Roman", Georgia, Serif;}
   body
+    // Navigation
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+      table.table.text-center.table-dark.bg-dark
+        tbody
+          tr
+            td
+              a.navbar-brand(href='/') HOME
+                button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+                  span.navbar-toggler-icon
+            td.text-right
+              #navbarSupportedContent.collapse.navbar-collapse
+                ul.navbar-nav.mr-auto.text-right
+                  li.nav-item
+                    a.nav-link(href='/Ordenar') Ordenar
+                  li.nav-item
+                    a.nav-link(href='/Verificar') Verificar
+                  li.nav-item.active
+                    a.nav-link(href='#')
+                      | Nosotros
+                      span.sr-only (current)
+                  li.nav-item
+                    a.nav-link(href='/') Login
+
+    
     // Header
-    header#home.w3-display-container.w3-content.w3-wide(style='max-width:500px;min-width:500px')
+    header#home.w3-display-container.w3-content.w3-wide.mt-3(style='max-width:500px;min-width:500px')
       img.w3-image(src='http://localhost:81/public/img/losganchos.png', alt='los ganchos', width='500px', height='800')
       .w3-display-bottomleft.w3-padding-large.w3-opacity
         h1.w3-xxlarge Los Ganchos
@@ -63,12 +87,15 @@ html
             | Plaza El cangrejo, Avenida Manuel Espinoza Batista, Panama. Primer piso al lado de nación sushi
       // End page content
       .third(style='display:flex; justify-content: center;')
-        button.btn.btn-primary(onclick="window.location.href='/'" ) Home
+        button.btn.btn-primary.mb-4(onclick="window.location.href='/'" ) Home
     // Footer
     footer.w3-center.w3-light-grey.w3-padding-32
-      p
-        | Esta pagina web y negocio electronico de servicio de tintoria a domicilio fue desarrollado por los estudiantes Ramon Castro, Manuel Fernandez y Pedro Ramos de la carrera desarrollo de software de la facultad de Sistema y computacion de la universidad tecnologica de panama del campo Victor levi Sasso con la guia del profesot erick agrazal todos los derechos reservados. 
-        a.w3-hover-text-green(href='https://www.w3schools.com/w3css/default.asp', title='W3.CSS', target='_blank')
+      .container
+        .row
+          .col-sm-10.offset-sm-1
+            p.text-justify
+              | Esta pagina web y negocio electronico de servicio de tintoria a domicilio fue desarrollado por los estudiantes Ramon Castro, Manuel Fernandez y Pedro Ramos de la carrera desarrollo de software de la facultad de Sistema y computacion de la universidad tecnologica de panama del campo Victor levi Sasso con la guia del profesot erick agrazal todos los derechos reservados. 
+              a.w3-hover-text-green(href='https://www.w3schools.com/w3css/default.asp', title='W3.CSS', target='_blank')
 
     script(src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous")
