@@ -6,7 +6,7 @@ db.usuario.insertOne({
     password:'$2b$10$ZNifQiUgJg3MApvk/xSvn.tL4EK4PfT3M5nyFObABOluCypbjAXne',
     nombre:{first:'Manuel',last:'Fernandez'},
     rol:'admin',
-    direccion:'Punta',
+    direccion:'Linda Vista, Calle K, Casa 16 ',
     edad:22,
     correo:'manfer1804@gmail.com',
     activo:true,  });

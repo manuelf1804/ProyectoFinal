@@ -13,6 +13,13 @@ append customcss
 block replace
     .container
         .row
+            .col-sm-12
+                .alert.alert-warning.alert-dismissible.fade.show(role='alert')
+                    span.badge.badge-pill.badge-success Nota:
+                    |  La fecha de entrega es de 3 a 5 dias despues de realizar el pedido.
+                    button.close(type='button', data-dismiss='alert', aria-label='Close')
+                        span(aria-hidden='true') ×
+        .row
             .col-xl-6
                 .card
                     .card-body
@@ -33,16 +40,16 @@ block replace
                                                 td #{serv.nombre}
                                                 td #{serv.abri}
                                                 td $#{parseFloat(serv.precio).toFixed(2)}
-            .col-xl-3.col-lg-6
+            .col-xl-4.col-lg-6
                 .card
                     .card-body
                         .stat-widget-one
                             .stat-icon.dib
                                 i.ti-money.text-success.border-success
                             .stat-content.dib
-                                .stat-text Total a pagar
+                                .stat-text Subtotal a pagar
                                 .stat-digit
-                                    span#total(value='0') 0.00      
+                                    span#total(value='0') 0.00
         .row
             .col-xl-12
                 .card
@@ -58,7 +65,7 @@ block replace
                                             each serv in servicios
                                                 th(scope='col') #{serv.abri}
                                     tbody
-                                        each val in ['camisas','vestidos','faldas','sacos']
+                                        each val in ['camisas','vestidos','faldas','pantalones']
                                             tr 
                                                 td #{val}
                                                 each serv in servicios
@@ -69,7 +76,7 @@ block replace
                                 if(!username)
                                     span(style='color:red') Porfavor logear antes de realizar la orden
                                 else
-                                    input.btn.btn-primary(type='submit' value='listo')                   
+                                    input#listo.btn.btn-secondary(type='submit' value='listo')                   
 
 append customjs
-    script(src=url+'/js/datatoggle.js')  
+    script(src=url+'/js/datatoggle.js')

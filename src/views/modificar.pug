@@ -48,6 +48,7 @@ block replace
                                     thead.thead-dark
                                         tr
                                             th Username
+                                            th Contraseña
                                             th Nombre
                                             th apellido
                                             th rol
@@ -64,7 +65,8 @@ block replace
                                                     td #{usuarito.username}
                                                         br
                                                         input#username(type='text' name='username')
-
+                                                    td 
+                                                        input#password(type='password' name='password')
                                                     td #{usuarito.nombre.first} 
                                                         br
                                                         input#nombre(type='text' name='nombre')
@@ -101,6 +103,8 @@ block replace
                                             form(action='/Modificar/Insertar/usuario', method='POST')
                                                 td 
                                                     input#username(type='text' name='username')
+                                                td
+                                                    input#password(type='password' name='password')
                                                 td 
                                                     input#nombre(type='text' name='nombre')
                                                 td 

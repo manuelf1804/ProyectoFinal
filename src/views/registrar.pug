@@ -1,39 +1,52 @@
-extends _template.pug
+extends _template
 
-block custom-css
-    link(rel="icon" href=url+"/IMG/favicon.ico")
+block customcss
     link(rel="stylesheet" href=url+"/CSS/style.css")
     link(rel="stylesheet" href=url+"/CSS/fonts.css")
-block navbar
-//- Para que salga vacio
-block sidebar
-//- Para que salga vacio
+
 block replace
-    h1.title Registrarme
-        img#logo(src=url+"/IMG/gancho.png")
     block formulario
-        form.row
+        form.row(method= 'POST')
             p.Explicacion
             | Se le pide acontinuacion que llene los siguientes campos para poder registrarse.
             .col-md-11.offset-md-1
                 .form-group.row
+                    label.col-sm-3.col-form-label(for='username') Username:
+                    .col-md-8
+                        input.form-control.border.border-dark#username(type="text", name="username" required)
+                .form-group.row
+                    label.col-sm-3.col-form-label(for='password') Contraseña:
+                    .col-md-8
+                        input.form-control.border.border-dark#password(type="password", name="password" required)
+                .form-group.row
+                    label.col-sm-3.col-form-label(for='passconfirm') Contraseña:
+                    .col-md-8
+                        input.form-control.border.border-dark#passconfim(type="password", name="passconfirm" required)
+                .form-group.row
                     label.col-sm-3.col-form-label(for='nom') Nombre:
                     .col-md-8
-                        input.form-control.border.border-dark#nom(type="text", name="nom")
+                        input.form-control.border.border-dark#nom(type="text", name="nombre" required)
                 .form-group.row
                     label.col-sm-3.col-form-label(for='ape') Apellido:
                     .col-md-8
-                        input.form-control.border.border-dark#ape(type="text", name="ape")
+                        input.form-control.border.border-dark#ape(type="text", name="apellido" required)
                 .form-group.row
                     label.col-sm-3.col-form-label(for='dir') Direccion:
                     .col-md-8
-                        input.form-control.border.border-dark#dir(type="text", name="dir")
+                        input.form-control.border.border-dark#dir(type="text", name="direccion" required)
                 .form-group.row
-                    label.col-sm-3.col-form-label(for='edad') Nombre:
+                    label.col-sm-3.col-form-label(for='edad') Edad:
                     .col-md-8
-                        input.form-control.border.border-dark#edad(type="number", name="edad")
+                        input.form-control.border.border-dark#edad(type="number", name="edad" min='18' max='99' required)
                 .form-group.row
-                    label.col-sm-3.col-form-label(for='email') Cedula:
+                    label.col-sm-3.col-form-label(for='email') Correo Electronico:
                     .col-md-8
-                        input.form-control.border.border-dark#email(type="email", name="email")
-                button#btn.btn.btn-dark.float-right Registrarme
+                        input.form-control.border.border-dark#email(type="email", name="correo" required)
+                .row
+                    .col-md-11
+                        button#btn.btn.btn-dark.float-right Registrarme
+    customjs
+        script.
+            let error = "#{error}"
+            if(error != '')
+                alert(error);

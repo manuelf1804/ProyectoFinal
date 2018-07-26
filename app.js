@@ -6,6 +6,7 @@ let bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 let MongoStore = require('connect-mongo')(session);
 let paypal = require('paypal-rest-sdk');
+var uuid = require('uuid/v4');
 app.locals.moment = require('moment');
 
 //Set Pug
@@ -17,8 +18,8 @@ app.set('view engine', 'pug');
 let user = 'sachiel';
 let pass = 'losganchos123';
 let bd = 'losganchos';
-let server = '192.168.1.109:27017'; //cambiar por localhost
-mongoose.connect('mongodb://'+user+':'+pass+'@'+server+'/'+bd+'?authDatabase='+bd);
+let server = 'localhost:27017';
+mongoose.connect('mongodb://'+user+':'+pass+'@'+server+'/'+bd+'?authDatabase='+bd, {useNewUrlParser:true});
 let db = mongoose.connection;
 db.on('error',console.error.bind(console,'Error de Conexion: '));
 db.once('open',() => {
@@ -28,20 +29,24 @@ db.once('open',() => {
 //Set PayPal 
 paypal.configure({
 	'mode': 'sandbox', //sandbox or live
-	'client_id': 'AYBPcdFAPiFiDu_a_Ks6CuZY925mXNIAHSHuYi6LwK0DxsW9YJMn_hnlCMN4cdtE2HabucUTy2xijSax',
-	'client_secret': 'EEKqDHFlz8i9tHoySNg72IZgVGgOrOeptmlrw1r0wB_x6-uYap_5PVORU06rZOW5KX7P-v0KaMDgqaiU'
+	'client_id': 'AXMXFzyP5xRJfd1bHdiOMTIYUYHeZS3KRqBp4opUlwREoGyT7L0oL-_tu8DfNzLSf2lPn2zVoobLvK3E',
+	'client_secret': 'EMwlM0O190eDQan_2Dk3CFdtTT-KmSHPU3QbTin-WmPM7a-lJpDNR_0L2N2GRfZoZmNpotWHcO_ycAm4'
   });
 
 // Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({
+	genid: function(){
+		return uuid();
+	},
 	secret: 'work hard',
-	resave: true,
+	resave: false,
 	saveUninitialized: false,
 	store: new MongoStore({
 		mongooseConnection: db
-	})
+	}),
+	cookie: {maxAge: 60 * 60 * 1000}
   }));
  
 let routes = require('./routes/router');
@@ -51,10 +56,11 @@ app.use('/',routesModificar);
 app.use(function(req,res){
 	res.render('PageNotFound');//Error 404
 });
-/* app.use(function(err,req,res,next){
+
+app.use(function(err,req,res,next){
 	res.render('error',{error:err})//resto de los errores
 })
- */
+
 // Set Routes
 const port = process.env.NODEPORT || 3022 ;
 

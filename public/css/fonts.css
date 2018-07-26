@@ -1,4 +1,4 @@
-/* este archivo es para especificar tamaños y tipos de letra que se usan en la pagina */
+﻿/* este archivo es para especificar tamaños y tipos de letra que se usan en la pagina */
 
 h1{
     font-size:40px;
@@ -12,6 +12,7 @@ h1,#sidebar-wrapper span, h3{
 }
 h2{
     font-family: 'Lobster', cursive;
+
 }
 p,label{
     font-family: 'Quattrocento Sans', sans-serif;

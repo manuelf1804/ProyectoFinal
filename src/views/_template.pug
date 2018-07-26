@@ -3,7 +3,7 @@ html.no-js(lang="es")
   head
     meta(charset="utf-8")
     meta(http-equiv="X-UA-Compatible" content="IE=edge")
-    - var url = 'http://localhost:81/public';
+    - let url = 'http://localhost:81/public';
     title #{title}
     meta(name="description" content="Sufee Admin - HTML5 Admin Template")
     meta(name="viewport" content="width=device-width, initial-scale=1")
@@ -22,6 +22,7 @@ html.no-js(lang="es")
       #dropi{
         position:absolute;
         left:auto !important;
+        right: 0 !important;
         top:100% !important;
       }
   
@@ -55,25 +56,7 @@ html.no-js(lang="es")
           .page-header.float-right
             .page-title
               ol.breadcrumb.text-right
-                if(username=='')
-                  a.nav-link(href="" data-toggle='dropdown') Login
-                  ul#dropi.dropdown-menu.dropdown-menu-right
-                    li.px-4.py-2
-                      form.form(role='form' action='/Login' method='POST')
-                        .form-group
-                          input#user.form-control.form-control-sm(name='user' placeholder='Usuario', type='text', required)
-                        .form-group
-                          input#pass.form-control.form-control-sm(name='pass' placeholder='Contraseña', type='password', required)
-                        .form-group
-                          button.btn.btn-primary.btn-block(type='submit') Login
-                        .form-group.text-center
-                          small
-                            a(href='/Registrarme') Registrarme
-                else
-                  a.nav-link(href="" data-toggle='dropdown') #{username}
-                  ul#dropi.dropdown-menu.dropdown-menu-right(style='left:auto;')
-                    li.px-4.py-2
-                      a.dropdown-item(href='/Logout') Logout
+                include _login
       .content.mt-3
         block replace
     

@@ -1,4 +1,4 @@
-var menus=[
+let menus=[
         {
         nombre:'Ordenar',
         icon:'shopping-cart'
@@ -9,7 +9,7 @@ var menus=[
         {
         nombre:'Nosotros',
         icon:'user'}];
-var menusAdmin  = [
+let menusAdmin  = [
         {
         nombre:'Modificar',
         icon:'edit'

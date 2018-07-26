@@ -2,3 +2,6 @@
 /node_modules
 # .logs de node
 *.log
+#logs de Mac
+.DS_STORE
+package-lock.json

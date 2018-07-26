@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
-var Schema = mongoose.Schema;
+let Schema = mongoose.Schema;
 
-var usuarioSchema = new Schema({
+let usuarioSchema = new Schema({
     username:String,
     password:String,
     nombre:{first:String,last:String},
@@ -14,17 +14,18 @@ var usuarioSchema = new Schema({
     activo:Boolean,
     },{collection:'usuario'});
 
-    usuarioSchema.statics.insert = function(username,nombre,apellido,rol,direccion,edad,correo,callback){
+    usuarioSchema.statics.insert = function(username,password,nombre,apellido,rol,direccion,edad,correo,callback){
         Usuario.findOne({username:username},'nombre',function(err,usuario){
             if(err){
-                return callback(err)
+                return callback(err);
             }
             else if(usuario){
-                return callback(usuario);
+                return callback(null,usuario);
             }
             else{
                 var data={
-                    username:username,
+                    username: username,
+                    password: bcrypt.hashSync(password,10),
                     nombre:{first:nombre,last:apellido},
                     rol:rol,
                     direccion:direccion,
@@ -49,7 +50,7 @@ var usuarioSchema = new Schema({
         })
     }
     usuarioSchema.statics.getFactDataByUser=function(username,callback){
-        Usuario.findOne({username:username},'nombre direccion correo',function(err,user){
+        Usuario.findOne({username:username},'_id nombre direccion correo',function(err,user){
             if(err) 
                 return callback(err);
             else if(!user){
@@ -58,7 +59,7 @@ var usuarioSchema = new Schema({
             callback(null,user);
         })
     }
-    usuarioSchema.statics.update = function(id,username,nombre,apellido,rol,direccion,edad,correo, callback){
+    usuarioSchema.statics.update = function(id,username,password,nombre,apellido,rol,direccion,edad,correo, callback){
         Usuario.findOne({_id:id},function(err,usuario){
             if(err)
                 return callback(err);
@@ -67,6 +68,7 @@ var usuarioSchema = new Schema({
             }
             else{
                     usuario.username = username || usuario.username;
+                    usuario.password = bcrypt.hash(password,10) || usuario.password;
                     usuario.nombre.first = nombre || usuario.nombre.first;
                     usuario.nombre.last = apellido || usuario.nombre.last;
                     usuario.rol = rol || usuario.rol;
@@ -95,7 +97,7 @@ var usuarioSchema = new Schema({
         })  
     }
     usuarioSchema.statics.login = function(username,password,callback){
-    Usuario.findOne({username:username},'username password rol',function(err,user){
+    Usuario.findOne({username:username},'',function(err,user){
         if(err)
             return callback(err);
         else if(!user)

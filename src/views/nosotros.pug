@@ -1,4 +1,102 @@
-extends _template
+doctype html
+html
+  title Nosotros
+  meta(charset='UTF-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+  link(rel='stylesheet', href='https://www.w3schools.com/w3css/4/w3.css')
+  link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous")
 
-block replace
-    h1 Hecho con amor por Ramon Castro, Manuel Fernandez y Pedro Ramos
+  style.
+    body {font-family: "Times New Roman", Georgia, Serif;}
+  body
+    // Navigation
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+      table.table.text-center.table-dark.bg-dark
+        tbody
+          tr
+            td
+              a.navbar-brand(href='/') HOME
+                button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+                  span.navbar-toggler-icon
+            td.text-right
+              #navbarSupportedContent.collapse.navbar-collapse
+                ul.navbar-nav.mr-auto.text-right
+                  li.nav-item
+                    a.nav-link(href='/Ordenar') Ordenar
+                  li.nav-item
+                    a.nav-link(href='/Verificar') Verificar
+                  li.nav-item.active
+                    a.nav-link(href='#')
+                      | Nosotros
+                      span.sr-only (current)
+                  li.nav-item
+                    a.nav-link(href='/') Login
+
+    
+    // Header
+    header#home.w3-display-container.w3-content.w3-wide.mt-3(style='max-width:500px;min-width:500px')
+      img.w3-image(src='http://localhost:81/public/img/losganchos.png', alt='los ganchos', width='500px', height='800')
+      .w3-display-bottomleft.w3-padding-large.w3-opacity
+        h1.w3-xxlarge Los Ganchos
+    // Page content
+    .w3-content(style='max-width:1100px')
+      // Descripcion y antecedentes
+      #about.w3-row.w3-padding-64
+        .w3-col.m6.w3-padding-large.w3-hide-small
+          img.w3-round.w3-image.w3-opacity-min(src='http://localhost:81/public/img/losganchos.png', alt='Los Ganchos', width='600', height='750')
+        .w3-col.m6.w3-padding-large
+          h1.w3-center Descripción y Antecedentes 
+          br
+          h5.w3-center "Cuidando tu ropa desde el 2010"
+          h4 Descripción
+          p.w3-text-grey
+            | Este negocio electrónico surge se una idea para poder tener un servicio a domicilio de lavado y planchado a domicilio para ayudar a las personas que no tienen tiempo de poder ir a hacer estos recorridos o que están demasiado ocupadas en su día a día.
+          br
+          p.w3-text-grey
+            | Somos una lavandería con un sistema de entregas a domicilio en la cual nuestros usuarios no tendrán que salir de sus casas para enviar sus ropas a nuestra lavandería. Nosotros nos encargaremos de recoger, realizar servicios de lavandería y entregar su ropa en la puerta de su casa.
+          br
+          h4 Antecedentes
+          p.w3-text-grey
+            | Somos una empresa que ofrece a nuestros clientes una variedad de servicios con respecto al planchado y levado de su ropa con implementación de servicio a domicilio para la facilidad de los clientes con la facilidad de pago digital.
+          br
+      hr
+      // Mision y Vision
+      #menu.w3-row.w3-padding-64
+        .w3-col.l6.w3-padding-large
+          h1.w3-center Misión y Visión
+          br
+          h4 Mision
+          p.w3-text-grey
+            | Somos una lavandería a domicilio que facilita la vida de nuestros clientes, proporcionándoles soluciones efectivas y oportunas a la hora de atender sus prendas de usos diario, ofreciendo nuestros servicios, con calidad y eficiencia.
+          br
+          h4 Vision
+          p.w3-text-grey
+            | Liderar el mercado respondiendo efectivamente por la calidad de nuestros servicios, asociados al compromiso con nuestros clientes, destacando por un servicio eficiente , moderno y puntual.
+          br
+        .w3-col.l6.w3-padding-large
+          img.w3-round.w3-image.w3-opacity-min(src='http://localhost:81/public/img/MisionVision1.png', alt='Mision vision', style='width:100%')
+      hr
+      // Ubicacion
+      #about.w3-row.w3-padding-64
+        .w3-col.m6.w3-padding-large.w3-hide-small
+          iframe(src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12878.122778491783!2d-79.53446722301214!3d8.98337917210324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8faca8f17f9b2d35%3A0xf685a45ee062dabf!2sPlaza+El+Cangrejo!5e0!3m2!1ses!2spa!4v1532472010258', width='400', height='300', frameborder='0', style='border:0', allowfullscreen='')
+        .w3-col.m6.w3-padding-large
+          h1.w3-center Ubicación
+          br
+          p.w3-large
+            | Plaza El cangrejo, Avenida Manuel Espinoza Batista, Panama. Primer piso al lado de nación sushi
+      // End page content
+      .third(style='display:flex; justify-content: center;')
+        button.btn.btn-primary.mb-4(onclick="window.location.href='/'" ) Home
+    // Footer
+    footer.w3-center.w3-light-grey.w3-padding-32
+      .container
+        .row
+          .col-sm-10.offset-sm-1
+            p.text-justify
+              | Esta pagina web y negocio electronico de servicio de tintoria a domicilio fue desarrollado por los estudiantes Ramon Castro, Manuel Fernandez y Pedro Ramos de la carrera desarrollo de software de la facultad de Sistema y computacion de la universidad tecnologica de panama del campo Victor levi Sasso con la guia del profesot erick agrazal todos los derechos reservados. 
+              a.w3-hover-text-green(href='https://www.w3schools.com/w3css/default.asp', title='W3.CSS', target='_blank')
+
+    script(src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous")
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous")
